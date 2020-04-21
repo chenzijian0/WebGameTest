@@ -4,8 +4,11 @@ import com.justicekn.webgame.Bean.GameItem.EquipmentEntity.ArmorAttributes;
 import com.justicekn.webgame.Bean.GameItem.EquipmentEntity.WeaponAttributes;
 import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
+import com.justicekn.webgame.DAO.Interface.GameItem.ReadUseableItemInf;
 import com.justicekn.webgame.Handler.GameBuff.GetBuffRankList;
+import com.justicekn.webgame.Handler.GameItem.CalculateIsUsedSuccessfully;
 import com.justicekn.webgame.Handler.Login.LoginHandler;
+import org.apache.el.lang.ELArithmetic;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,14 +16,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Random;
 
 @SpringBootTest
-class WebgameApplicationTests {
+class WebgameApplicationTests
+{
     @Autowired
     LoginHandler loginHandler;
     @Autowired
     GetBuffRankList getBuffRankList;
 
     @Test
-    void contextLoads() {
+    void contextLoads()
+    {
         int id = 37;
         String account = "1";
         //            获取用户游戏属性信息
@@ -43,7 +48,7 @@ class WebgameApplicationTests {
         weaponId.append(238);
         weaponId.append(256);
         System.out.println(weaponId);
-        WeaponAttributes attributes = new WeaponAttributes(123,weaponId.toString(),gamersEntity);
+        WeaponAttributes attributes = new WeaponAttributes(123, weaponId.toString(), gamersEntity);
         System.out.println(attributes.toString());
         System.out.println(attributes.getWeaponClassName());
         System.out.println(attributes.getWeaponAttributes());
@@ -51,7 +56,8 @@ class WebgameApplicationTests {
     }
 
     @Test
-    void Test() {
+    void Test()
+    {
         int id = 37;
         String account = "1";
         //            获取用户游戏属性信息
@@ -74,11 +80,24 @@ class WebgameApplicationTests {
         weaponId.append(238);
         weaponId.append(256);
         System.out.println(weaponId);
-        ArmorAttributes attributes = new ArmorAttributes(123,weaponId.toString(), gamersEntity);
+        ArmorAttributes attributes = new ArmorAttributes(123, weaponId.toString(), gamersEntity);
         System.out.println(attributes.toString());
         System.out.println(attributes.getArmorClassName());
         System.out.println(attributes.getArmorAttributes());
 
     }
 
+    @Autowired
+    ReadUseableItemInf readUseableItemInf;
+    @Autowired
+    CalculateIsUsedSuccessfully calculateIsUsedSuccessfully;
+
+    @Test
+    void UseProps()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            System.out.println(calculateIsUsedSuccessfully.calculateIsUsedSuccessfully(1,37,i+15));
+        }
+    }
 }
