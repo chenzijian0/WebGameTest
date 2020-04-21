@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>WebGame </title>
+    <meta name="keywords" content="WebGameExeTest">
+    <meta name="description" content="WebGameExeTest">
+    <base href=".">
+    <link rel="stylesheet" type="text/css" href="./绯月ScarletMoon_files/style181231_1.css"
+          th:href="@{/css/GamePageCss/style.css}">
+
+    <script type="text/javascript" src="./绯月ScarletMoon_files/jquery-1.11.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+
+
+    <script language="JavaScript">
+        var imgpath = '1580388753';
+
+        function getObj(id) {
+            return document.getElementById(id);
+        }
+
+        function ietruebody() {
+            return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body;
+        }
+
+        function IsElement(id) {
+            return document.getElementById(id) != null ? true : false;
+        }
+
+        $(function () {
+            $("#kf_topuser,#kf_information").hover(function () {
+                $("#kf_information").show();
+            }, function () {
+                $("#kf_information").hide();
+            });
+        })
+
+    </script>
+
+
+</head>
+<body>
+<div></div>
+<div id="alldiv">
+
+    <div class="drow">
+
+
+        <div class="dcol" style="width:874px;padding-top:5px;">
+            <style type="text/css">
+                .kf_fw_ig1 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig1 td {
+                    height: 32px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig2 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig2 td {
+                    height: 50px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 50px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig2 td img {
+                    vertical-align: middle;
+                }
+
+                .kf_fw_ig3 td {
+                    height: 32px;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig4 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig4 td {
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 24px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig5 {
+                }
+
+                .kf_fw_ig5 td {
+                    vertical-align: top;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title1 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title2 {
+                    color: #000000;
+                    padding: 10px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title3 {
+                    padding: 5px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title4 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                }
+
+                .kf_fw_boxa li {
+                    padding: 3px 0;
+                }
+
+                .kf_fw_boxa a {
+                    color: #0000FF;
+                    background: #EEEEFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .kf_fw_boxa a:hover {
+                    text-decoration: none;
+                    color: #FFCC33;
+                    background: #FFFFFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .pk_log_ul li {
+                    padding: 0 5px;
+                }
+
+                .pk_log_j {
+                    text-align: left;
+                    background-color: #0075EA;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_g {
+                    text-align: left;
+                    background-color: #FFA6FF;
+                }
+
+                .pk_log_i {
+                    text-align: right;
+                    background-color: #FFB895;
+                    margin-right: 50%;
+                }
+
+                .pk_log_u {
+                    text-align: left;
+                    background-color: #FF9D9D;
+                    margin-left: 50%;
+                }
+
+                .pk_log_v {
+                    text-align: center;
+                    background-color: #00974B;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_f {
+                    text-align: center;
+                    background-color: #FC412C;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_h {
+                    text-align: center;
+                    background-color: #FF6060;
+                    color: #FFFFFF;
+                }
+
+                .ind01 {
+                    font-size: 14px;
+                    height: 40px;
+                    border: solid #9999ff 1px;
+                    padding: 10px 20px;
+                    line-height: 40px;
+                }
+
+                .ind01:hover {
+                    font-size: 14px;
+                    border: solid #99CCff 1px;
+                    text-decoration: none;
+                }
+
+                .pk_log_text li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                }
+
+                .pk_log_text_b li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                .pk_log_left {
+                    text-align: left;
+                    background-color: #FFDDDD;
+                    margin-right: 20px;
+                    border-top-right-radius: 10px;
+                    box-shadow: 1px 2px 1px #FF9999;
+                }
+
+                .pk_log_right {
+                    text-align: right;
+                    background-color: #DDDDFF;
+                    margin-left: 20px;
+                    border-top-left-radius: 10px;
+                    box-shadow: 1px 2px 1px #9999FF;
+                }
+
+                .pk_log_center {
+                    text-align: center;
+                    background-color: #DDFFDD;
+                    margin: 0 10px;
+                    border-radius: 5px;
+                    box-shadow: 1px 2px 1px #99FF99;
+                }
+
+                /*pt*/
+                .pk_tips {
+                    position: relative;
+                }
+
+                .pk_tips span {
+                    display: none;
+                    text-decoration: none;
+                    border: 1px solid #CCCCFF;
+                    background: #EEEEFF;
+                    padding: 5px;
+                    position: absolute;
+                    top: 90%;
+                    width: 240px;
+                    text-align: left;
+                }
+
+                .pk_tips:hover {
+                    background: none;
+                }
+
+                .pk_tips:hover span {
+                    display: block;
+                }
+
+                /*pt*/
+            </style>
+            <script language="JavaScript">
+                function checkset(chars) {
+                    if (!confirm(chars)) {
+                        return false;
+                    }
+                }
+            </script>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center">
+                    <tbody>
+                    <tr>
+                        <td class="kf_fw_ig_title1" style="margin-left: 7px;" th:text="${session.userName}+' [ KFB: '+${session.userKfb}+ ' ]'">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="kf_fw_ig_title2" style="font-size:14px;"><a
+                                href="https://bbs.ikfol.com/kf_fw_ig_index.php" style="color:#ff0000;"
+                                th:href="@{/GamePage/gameMain.html}">争夺首页</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_mybp.php"
+                                th:href="@{/GamePage/gameItem.html}">我的物品</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_halo.php"
+                                th:href="@{/GamePage/gameBuff.html}">战力光环</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_pklist.php"
+                                th:href="@{/GamePage/gameRanking.html}">争夺排行</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_shop.php"
+                                    th:href="@{/GamePage/gameShop.html}">物品商店</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_readme.php?safeid=025f86f"
+                                    th:href="@{/GamePage/gameHelp.html}">帮助说明</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig1">
+                    <tbody th:with="rankingCount=0">
+                    <tr>
+                        <td colspan="4" class="kf_fw_ig_title1">争夺楼层排行</td>
+                    </tr>
+                    <tr>
+                        <td>排行</td>
+                        <td>用户名</td>
+                        <td>最大到达层数</td>
+                        <td>----</td>
+                    </tr>
+                    <!--                        <tr>-->
+                    <!--                            <td>1</td>-->
+                    <!--                            <td>ricercare</td>-->
+                    <!--                            <td>239</td>-->
+                    <!--                            <td>&nbsp;</td>-->
+                    <!--                        </tr>-->
+
+                    <tr th:each=" rankInf : ${rankingList} ">
+
+                        <td th:text="${rankInf.rankingCount}"></td>
+                        <td th:text="${rankInf.name}"></td>
+                        <td th:text="${rankInf.floor}"></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+
+        </div>
+        <div class="c"></div>
+
+        <div class="line"></div>
+    </div>
+</div>
+<script language="JavaScript" src="./绯月ScarletMoon_files/global.js" th:src="@{/js/GamePageJs/global.js}"></script>
+<script language="JavaScript">
+    var openmenu = {'td_hack': 'menu_hack', 'td_skin': 'menu_skin'};
+    read.InitMenu();
+</script>
+
+</body>
+</html>

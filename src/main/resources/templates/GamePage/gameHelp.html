@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>WebGame </title>
+    <meta name="keywords" content="WebGameExeTest">
+    <meta name="description" content="WebGameExeTest">
+
+    <base href=".">
+    <link rel="stylesheet" type="text/css" href="./绯月ScarletMoon_help_files/style181231_1.css"
+          th:href="@{/css/GamePageCss/style.css}">
+
+    <script type="text/javascript" src="./绯月ScarletMoon_help_files/jquery-1.11.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+
+
+    <script language="JavaScript">
+        var imgpath = '1580388753';
+
+        function getObj(id) {
+            return document.getElementById(id);
+        }
+
+        function ietruebody() {
+            return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body;
+        }
+
+        function IsElement(id) {
+            return document.getElementById(id) != null ? true : false;
+        }
+
+        $(function () {
+            $("#kf_topuser,#kf_information").hover(function () {
+                $("#kf_information").show();
+            }, function () {
+                $("#kf_information").hide();
+            });
+        })
+
+    </script>
+
+
+</head>
+<body>
+<div></div>
+<div id="alldiv">
+
+    <div class="drow">
+
+
+        <div class="dcol" style="width:874px;padding-top:5px;">
+            <style type="text/css">
+                .kf_fw_ig1 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig1 td {
+                    height: 32px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig2 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig2 td {
+                    height: 50px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 50px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig2 td img {
+                    vertical-align: middle;
+                }
+
+                .kf_fw_ig3 td {
+                    height: 32px;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig4 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig4 td {
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 24px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig5 {
+                }
+
+                .kf_fw_ig5 td {
+                    vertical-align: top;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title1 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title2 {
+                    color: #000000;
+                    padding: 10px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title3 {
+                    padding: 5px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title4 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                }
+
+                .kf_fw_boxa li {
+                    padding: 3px 0;
+                }
+
+                .kf_fw_boxa a {
+                    color: #0000FF;
+                    background: #EEEEFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .kf_fw_boxa a:hover {
+                    text-decoration: none;
+                    color: #FFCC33;
+                    background: #FFFFFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .pk_log_ul li {
+                    padding: 0 5px;
+                }
+
+                .pk_log_j {
+                    text-align: left;
+                    background-color: #0075EA;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_g {
+                    text-align: left;
+                    background-color: #FFA6FF;
+                }
+
+                .pk_log_i {
+                    text-align: right;
+                    background-color: #FFB895;
+                    margin-right: 50%;
+                }
+
+                .pk_log_u {
+                    text-align: left;
+                    background-color: #FF9D9D;
+                    margin-left: 50%;
+                }
+
+                .pk_log_v {
+                    text-align: center;
+                    background-color: #00974B;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_f {
+                    text-align: center;
+                    background-color: #FC412C;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_h {
+                    text-align: center;
+                    background-color: #FF6060;
+                    color: #FFFFFF;
+                }
+
+                .ind01 {
+                    font-size: 14px;
+                    height: 40px;
+                    border: solid #9999ff 1px;
+                    padding: 10px 20px;
+                    line-height: 40px;
+                }
+
+                .ind01:hover {
+                    font-size: 14px;
+                    border: solid #99CCff 1px;
+                    text-decoration: none;
+                }
+
+                .pk_log_text li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                }
+
+                .pk_log_text_b li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                .pk_log_left {
+                    text-align: left;
+                    background-color: #FFDDDD;
+                    margin-right: 20px;
+                    border-top-right-radius: 10px;
+                    box-shadow: 1px 2px 1px #FF9999;
+                }
+
+                .pk_log_right {
+                    text-align: right;
+                    background-color: #DDDDFF;
+                    margin-left: 20px;
+                    border-top-left-radius: 10px;
+                    box-shadow: 1px 2px 1px #9999FF;
+                }
+
+                .pk_log_center {
+                    text-align: center;
+                    background-color: #DDFFDD;
+                    margin: 0 10px;
+                    border-radius: 5px;
+                    box-shadow: 1px 2px 1px #99FF99;
+                }
+
+                /*pt*/
+                .pk_tips {
+                    position: relative;
+                }
+
+                .pk_tips span {
+                    display: none;
+                    text-decoration: none;
+                    border: 1px solid #CCCCFF;
+                    background: #EEEEFF;
+                    padding: 5px;
+                    position: absolute;
+                    top: 90%;
+                    width: 240px;
+                    text-align: left;
+                }
+
+                .pk_tips:hover {
+                    background: none;
+                }
+
+                .pk_tips:hover span {
+                    display: block;
+                }
+
+                /*pt*/
+            </style>
+            <script language="JavaScript">
+                function checkset(chars) {
+                    if (!confirm(chars)) {
+                        return false;
+                    }
+                }
+            </script>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center">
+                    <tbody>
+                    <tr>
+                        <td class="kf_fw_ig_title1" style="margin-left: 7px;" th:text="${session.userName}+' [ KFB: '+${session.userKfb} +' ]'">道具</td>
+                    </tr>
+                    <tr>
+                        <td class="kf_fw_ig_title2" style="font-size:14px;"><a
+                                href="https://bbs.ikfol.com/kf_fw_ig_index.php" style="color:#ff0000;"
+                                th:href="@{/GamePage/gameMain.html}">争夺首页</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_mybp.php"
+                                th:href="@{/GamePage/gameItem.html}">我的物品</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_halo.php"
+                                th:href="@{/GamePage/gameBuff.html}">战力光环</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_pklist.php"
+                                th:href="@{/GamePage/gameRanking.html}">争夺排行</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_shop.php"
+                                    th:href="@{/GamePage/gameShop.html}">物品商店</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_readme.php?safeid=025f86f"
+                                    th:href="@{/GamePage/gameHelp.html}">帮助说明</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig1">
+                    <tbody>
+                    <tr>
+                        <td colspan="3" deep="7">
+                            相关详细说明<br data-filtered="filtered">
+                            装备属性<br data-filtered="filtered">
+                            主属性和装备等级挂钩，装备等级和人物绑定，更换任何装备都继承你的装备等级。<br data-filtered="filtered">
+                            从属性加成主属性。（举例：主属性加攻击力50点，从属性加攻击40%，则实际附加攻击为70点。）<br data-filtered="filtered">
+                            从属性加成必须对应主属性存在，否则无效。（举例：主属性加攻，从属性加攻加吸血，则从属性中加吸血的部分无效。）<br data-filtered="filtered">
+                            从属性加成范围：增长为随机0.2%-0.5%（系数加成翻倍），特殊效果影响出现[极]属性，加成0.8%。<br data-filtered="filtered">
+                            神秘属性，只在传奇装备中低概率出现，不受任何加成。<br data-filtered="filtered">
+                            NPC属性<br data-filtered="filtered">
+                            [1-50层]普通的NPC，力量[所在层数*5]、体质[所在层数*5]、敏捷[所在层数*2]、灵活[所在层数*2]、智力[所在层数*2]、意志[所在层数*1]。<br
+                                data-filtered="filtered">
+                            [51-100层]普通的NPC，力量[所在层数*10]、体质[所在层数*7]、敏捷[所在层数*3]、灵活[所在层数*3]、智力[所在层数*3]、意志[所在层数*4]。<br
+                                data-filtered="filtered">
+                            [101-200层]普通的NPC，力量[所在层数*13]、体质[所在层数*10]、敏捷[所在层数*5]、灵活[所在层数*6]、智力[所在层数*6]、意志[所在层数*8]。<br
+                                data-filtered="filtered">
+                            特别强壮的NPC，在普通NPC的基础上强化力量、体质、意志<br data-filtered="filtered">
+                            特别快速的NPC，在普通NPC的基础上强化敏捷、灵活、智力<br data-filtered="filtered">
+                            特别虚弱的NPC，在普通NPC的基础上弱化体质、意志<br data-filtered="filtered">
+                            特别缓慢的NPC，在普通NPC的基础上弱化敏捷<br data-filtered="filtered">
+                            以上各属性随机出现<br data-filtered="filtered">
+                            每10层必出BOSS级NPC，全属性强化<br data-filtered="filtered">
+                            <br data-filtered="filtered">
+                            灵活和智力的抵消机制<br data-filtered="filtered">
+                            战斗开始前，会重新计算战斗双方的灵活和智力
+                            灵活=(自己的灵活值-(双方灵活值之和 x 33%))
+                            智力=(自己的智力值-(双方智力值之和 x 33%))
+                            <br data-filtered="filtered">
+                            技能说明<br data-filtered="filtered">
+                            基础技能(装备武器后自动更换为武器自带技能)：[重击]伤害等于(体质值 x 4 + 智力值 x 4)<br data-filtered="filtered">
+                            NPC基础技能(目前全NPC通用)：[狂暴怒吼]提升(当前攻击力 x 125%)<br data-filtered="filtered">
+                            <br data-filtered="filtered">
+                            各道具效果<br data-filtered="filtered">
+                            蕾米莉亚同人漫画<br data-filtered="filtered">
+                            强势，每本+1力量+1体质，满50本时，追加+700生命值<br data-filtered="filtered">
+                            十六夜同人漫画<br data-filtered="filtered">
+                            灵活，每本+1敏捷+1灵活，满50本时，追加+100攻击速度<br data-filtered="filtered">
+                            档案室钥匙<br data-filtered="filtered">
+                            窃，每把钥匙增加1%获得更高级别盒子的概率(对高级盒子加成递增)，满30枚时，增加30点可分配点数<br data-filtered="filtered">
+                            傲娇LOLI娇蛮音CD<br data-filtered="filtered">
+                            萌，每张CD降低对手生命值上限的0.8%，满30张时，追加降低对手10%攻击力<br data-filtered="filtered">
+                            消逝之药<br data-filtered="filtered">
+                            简单直接，每瓶药所有属性+5(不含耐力、幸运)，满10瓶时，追加120点可分配点数<br data-filtered="filtered">
+                            整形优惠卷<br data-filtered="filtered">
+                            脸很重要，打开盒子获得KFB\经验值增加(每张1%，与其他加成道具相乘叠加)；<br data-filtered="filtered">
+                            打开盒子时，增加获得道具/装备的概率(每张1%，与其他加成道具相加叠加)；<br data-filtered="filtered">
+                            满10张时，获得装备时，从属性有概率突破上限获得[极]加成(与其他会影响获得[极]加成的概率相加叠加)
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+
+        </div>
+        <div class="c"></div>
+
+        <div class="line"></div>
+    </div>
+</div>
+<script language="JavaScript" src="./绯月ScarletMoon_files/global.js" th:src="@{/js/GamePageJs/global.js}"></script>
+<script language="JavaScript">
+    var openmenu = {'td_hack': 'menu_hack', 'td_skin': 'menu_skin'};
+    read.InitMenu();
+</script>
+
+</body>
+</html>

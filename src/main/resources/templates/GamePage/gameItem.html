@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>WebGame </title>
+    <meta name="keywords" content="WebGameExeTest">
+    <meta name="description" content="WebGameExeTest">
+    <base href=".">
+    <link rel="stylesheet" type="text/css" href="./绯月ScarletMoon_files/style181231_1.css"
+          th:href="@{/css/GamePageCss/style.css}">
+
+    <script type="text/javascript" src="./绯月ScarletMoon_files/jquery-1.11.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+
+
+    <script language="JavaScript">
+        var imgpath = '1580388753';
+
+        function getObj(id) {
+            return document.getElementById(id);
+        }
+
+        function ietruebody() {
+            return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body;
+        }
+
+        function IsElement(id) {
+            return document.getElementById(id) != null ? true : false;
+        }
+
+        $(function () {
+            $("#kf_topuser,#kf_information").hover(function () {
+                $("#kf_information").show();
+            }, function () {
+                $("#kf_information").hide();
+            });
+        })
+
+    </script>
+
+
+</head>
+<body>
+<div></div>
+<div id="alldiv">
+
+    <div class="drow">
+
+
+        <div class="dcol" style="width:874px;padding-top:5px;">
+            <style type="text/css">
+                .kf_fw_ig1 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig1 td {
+                    height: 32px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig2 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig2 td {
+                    height: 50px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 50px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig2 td img {
+                    vertical-align: middle;
+                }
+
+                .kf_fw_ig3 td {
+                    height: 32px;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig4 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig4 td {
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 24px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig5 {
+                }
+
+                .kf_fw_ig5 td {
+                    vertical-align: top;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title1 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title2 {
+                    color: #000000;
+                    padding: 10px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title3 {
+                    padding: 5px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title4 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                }
+
+                .kf_fw_boxa li {
+                    padding: 3px 0;
+                }
+
+                .kf_fw_boxa a {
+                    color: #0000FF;
+                    background: #EEEEFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .kf_fw_boxa a:hover {
+                    text-decoration: none;
+                    color: #FFCC33;
+                    background: #FFFFFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .pk_log_ul li {
+                    padding: 0 5px;
+                }
+
+                .pk_log_j {
+                    text-align: left;
+                    background-color: #0075EA;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_g {
+                    text-align: left;
+                    background-color: #FFA6FF;
+                }
+
+                .pk_log_i {
+                    text-align: right;
+                    background-color: #FFB895;
+                    margin-right: 50%;
+                }
+
+                .pk_log_u {
+                    text-align: left;
+                    background-color: #FF9D9D;
+                    margin-left: 50%;
+                }
+
+                .pk_log_v {
+                    text-align: center;
+                    background-color: #00974B;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_f {
+                    text-align: center;
+                    background-color: #FC412C;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_h {
+                    text-align: center;
+                    background-color: #FF6060;
+                    color: #FFFFFF;
+                }
+
+                .ind01 {
+                    font-size: 14px;
+                    height: 40px;
+                    border: solid #9999ff 1px;
+                    padding: 10px 20px;
+                    line-height: 40px;
+                }
+
+                .ind01:hover {
+                    font-size: 14px;
+                    border: solid #99CCff 1px;
+                    text-decoration: none;
+                }
+
+                .pk_log_text li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                }
+
+                .pk_log_text_b li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                .pk_log_left {
+                    text-align: left;
+                    background-color: #FFDDDD;
+                    margin-right: 20px;
+                    border-top-right-radius: 10px;
+                    box-shadow: 1px 2px 1px #FF9999;
+                }
+
+                .pk_log_right {
+                    text-align: right;
+                    background-color: #DDDDFF;
+                    margin-left: 20px;
+                    border-top-left-radius: 10px;
+                    box-shadow: 1px 2px 1px #9999FF;
+                }
+
+                .pk_log_center {
+                    text-align: center;
+                    background-color: #DDFFDD;
+                    margin: 0 10px;
+                    border-radius: 5px;
+                    box-shadow: 1px 2px 1px #99FF99;
+                }
+
+                /*pt*/
+                .pk_tips {
+                    position: relative;
+                }
+
+                .pk_tips span {
+                    display: none;
+                    text-decoration: none;
+                    border: 1px solid #CCCCFF;
+                    background: #EEEEFF;
+                    padding: 5px;
+                    position: absolute;
+                    top: 90%;
+                    width: 240px;
+                    text-align: left;
+                }
+
+                .pk_tips:hover {
+                    background: none;
+                }
+
+                .pk_tips:hover span {
+                    display: block;
+                }
+
+                /*pt*/
+                .pt {
+                    color: #00cc00;
+                }
+
+                .xy {
+                    color: #0000cc;
+                }
+
+                .xiyou {
+                    color: #eecc00;
+                }
+
+                .cq {
+                    color: #ff6600;
+                }
+
+                .sm {
+                    color: #ff0066;
+                }
+            </style>
+            <script language="JavaScript">
+                function checkset(chars) {
+                    if (!confirm(chars)) {
+                        return false;
+                    }
+                }
+            </script>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center">
+                    <tbody>
+                    <tr>
+                        <td class="kf_fw_ig_title1" style="margin-left: 7px;"
+                            th:text="${session.userName}+' [ KFB: '+${session.userKfb} +' ]'">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="kf_fw_ig_title2" style="font-size:14px;"><a
+                                href="https://bbs.ikfol.com/kf_fw_ig_index.php" style="color:#ff0000;"
+                                th:href="@{/GamePage/gameMain.html}">争夺首页</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_mybp.php"
+                                th:href="@{/GamePage/gameItem.html}">我的物品</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_halo.php"
+                                th:href="@{/GamePage/gameBuff.html}">战力光环</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_pklist.php"
+                                th:href="@{/GamePage/gameRanking.html}">争夺排行</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_shop.php"
+                                    th:href="@{/GamePage/gameShop.html}">物品商店</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_readme.php?safeid=025f86f"
+                                    th:href="@{/GamePage/gameHelp.html}">帮助说明</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+            <script type="text/javascript">
+                function sywp(wpid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "kf_fw_ig_mybpdt.php",
+                        data: "do=1&id=" + wpid + "&safeid=025f86f",
+                        success: function (msg) {
+                            var wptrid = "wp_" + wpid;
+                            $("#" + wptrid).html(msg);
+                        }
+                    });
+                }
+
+                function cswp(wpid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "kf_fw_ig_mybpdt.php",
+                        data: "do=2&id=" + wpid + "&safeid=025f86f",
+                        success: function (msg) {
+                            var wptrid = "wp_" + wpid;
+                            $("#" + wptrid).html(msg);
+                        }
+                    });
+                }
+
+                function dkhz(hzlv) {
+                    $.ajax({
+                        type: "POST",
+                        url: "OpenBox",
+                        data: "boxId=" + hzlv,
+                        success: function (msg) {
+                            $("#boxtext").append(msg);
+                            $("#boxtext").append("<br>");
+                            if (hzlv == 1) {
+                                $('.OrdinaryBox').text(parseInt($('.OrdinaryBox').text()) - 1);
+                            }
+                            if (hzlv == 2) {
+                                $('.LuckyBox').text(parseInt($('.LuckyBox').text()) - 1);
+                            }
+                            if (hzlv == 3) {
+                                $('.RareBox').text(parseInt($('.RareBox').text()) - 1);
+                            }
+                            if (hzlv == 4) {
+                                $('.LegendBox').text(parseInt($('.LegendBox').text()) - 1);
+                            }
+                            if (hzlv == 5) {
+                                $('.MysteryBox').text(parseInt($('.MysteryBox').text()) - 1);
+                            }
+                        }
+                    });
+                }
+
+                function cdzb(zbid , id) {
+                    $.ajax({
+                        type: "POST",
+                        url: "EquipmentWeapons",
+                        data: "identifyId="+zbid,
+                        success: function (msg) {
+                            var wptrid = "wp_" + zbid;
+                            $("#" + id).html(msg);
+                        }
+                    });
+                }
+
+                function cdwq(zbid , id) {
+                    $.ajax({
+                        type: "POST",
+                        url: "EquipmentWeapons",
+                        data: "identifyId="+zbid,
+                        success: function (msg) {
+                            var wptrid = "wp_" + zbid;
+                            $("#" + id).html(msg);
+                        }
+                    });
+                }
+                function cdfj(zbid , id) {
+                    $.ajax({
+                        type: "POST",
+                        url: "EquipmentArm",
+                        data: "identifyId="+zbid,
+                        success: function (msg) {
+                            var wptrid = "wp_" + zbid;
+                            $("#" + id).html(msg);
+                        }
+                    });
+                }
+
+                function rlzb(zbid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "kf_fw_ig_mybpdt.php",
+                        data: "do=5&id=" + zbid + "&safeid=025f86f",
+                        success: function (msg) {
+                            var wptrid = "wp_" + zbid;
+                            $("#" + wptrid).html(msg);
+                        }
+                    });
+                }
+
+                function rlzb_qr(zbid) {
+                    if (confirm("熔炼后增加装备经验值，但该[传奇]装备会消失，确定要熔炼吗？")) {
+                        $.ajax({
+                            type: "POST",
+                            url: "kf_fw_ig_mybpdt.php",
+                            data: "do=5&id=" + zbid + "&safeid=025f86f",
+                            success: function (msg) {
+                                var wptrid = "wp_" + zbid;
+                                $("#" + wptrid).html(msg);
+                            }
+                        });
+                    }
+                }
+            </script>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig1">
+                    <tbody>
+                    <tr>
+                        <td colspan="5" class="kf_fw_ig_title1">我的盒子</td>
+                    </tr>
+                    <tr>
+                        <td width="20%"><span style="color:#00cc00;">普通</span> 盒子 [ <span class="OrdinaryBox"
+                                                                                          style="font-weight:bold;font-size:14px;"
+                                                                                          th:text="${myBox.ordinaryBox}">0</span>
+                            个 ]
+                        </td>
+                        <td width="20%"><span style="color:#0000CC;">幸运</span> 盒子 [ <span class="LuckyBox"
+                                                                                          style="font-weight:bold;font-size:14px;"
+                                                                                          th:text="${myBox.luckyBox}">0</span>
+                            个 ]
+                        </td>
+                        <td width="20%"><span style="color:#EECC00;">稀有</span> 盒子 [ <span class="RareBox"
+                                                                                          style="font-weight:bold;font-size:14px;"
+                                                                                          th:text="${myBox.rareBox}">0</span>
+                            个 ]
+                        </td>
+                        <td width="20%"><span style="color:#FF6600;">传奇</span> 盒子 [ <span class="LegendBox"
+                                                                                          style="font-weight:bold;font-size:14px;"
+                                                                                          th:text="${myBox.legendBox}">51</span>
+                            个 ]
+                        </td>
+                        <td width="20%"><span style="color:#FF0066;">神秘</span> 盒子 [ <span class="MysteryBox"
+                                                                                          style="font-weight:bold;font-size:14px;"
+                                                                                          th:text="${myBox.mysteryBox}">0</span>
+                            个 ]
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;" onclick="dkhz(1)">打开1个</a></td>
+                        <td><a href="javascript:;" onclick="dkhz(2)">打开1个</a></td>
+                        <td><a href="javascript:;" onclick="dkhz(3)">打开1个</a></td>
+                        <td><a href="javascript:;" onclick="dkhz(4)">打开1个</a></td>
+                        <td><a href="javascript:;" onclick="dkhz(5)">打开1个</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:;" onclick="dkhz(1)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkhz(2)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkhz(3)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkhz(4)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkhz(5)">打开全部</a></td>
+
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <td colspan="5" id="boxtext"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig4">
+                    <tbody>
+                    <tr>
+                        <td colspan="3" class="kf_fw_ig_title1">我的装备背包</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">装备</td>
+                        <td width="10%">熔炼</td>
+                        <td width="80%">名称</td>
+                    </tr>
+                    <tr th:each="wl: ${weaponList}" th:if="${#lists.isEmpty(weaponList)==false}">
+
+                        <td id="wp_61523151" th:id="${wl.identifyId}"><a href="javascript:;" th:onclick="cdwq([[${wl.weaponId}]],[[${wl.identifyId}]])"
+                                                                         onclick="cdzb(&#39;61523151&#39;)">装备</a></td>
+                        <td><a href="javascript:;" onclick="rlzb_qr(&#39;61523151&#39;)">熔炼</a></td>
+                        <td style="text-align:left;padding-left:5px;"><span th:class="${wl.ra}"
+                                                                            th:text="${wl.weaponClassName}">传奇的铠甲</span>
+                            <span
+                                    th:text="${wl.weaponBonus}"></span><br><span
+                                    style="color:#FF0066;"
+                                    th:text="${wl.smAttribute}" th:if="${#strings.isEmpty(wl.smAttribute)==false}">冰霜神秘：开局给对方造成（200+系数*20）的无视护甲伤害，并减速对方15%</span><span
+                                    th:utext="${wl.weaponAttributes}"></span>
+                        </td>
+
+                    </tr>
+                    <tr th:each="al: ${armorList}" th:if="${#lists.isEmpty(armorList)==false}">
+
+                        <td id="wp_61523151" th:id="${al.identifyId}"><a href="javascript:;" th:onclick="cdfj([[${al.armorId}]],[[${al.identifyId}]])"
+                                                                         onclick="cdzb(&#39;61523151&#39;)">装备</a></td>
+                        <td><a href="javascript:;" onclick="rlzb_qr(&#39;61523151&#39;)">熔炼</a></td>
+                        <td style="text-align:left;padding-left:5px;"><span th:class="${al.ra}"
+                                                                            th:text="${al.armorClassName}">传奇的铠甲</span>
+                            <span
+                                    th:text="${al.armorBonus}"></span><br><span
+                                    style="color:#FF0066;"
+                                    th:text="${al.smAttribute}" th:if="${#strings.isEmpty(al.smAttribute)==false}">冰霜神秘：开局给对方造成（200+系数*20）的无视护甲伤害，并减速对方15%</span><span
+                                    th:utext="${al.armorAttributes}"></span>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="4"><span style="color:#0000FF">不显示超过10件以上的物品，如物品超过10件，请使用或出售掉多余的即可全部显示。</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig1">
+                    <tbody>
+                    <tr>
+                        <td colspan="3" class="kf_fw_ig_title1">我的道具背包</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">使用</td>
+                        <td width="10%">出售</td>
+                        <td width="80%">名称</td>
+                    </tr>
+                    <tr id="wp_61523139" th:id="${ul.identifyId}" th:each="ul:${usableItems}"
+                        th:if="${#lists.isEmpty(usableItems)==false}">
+                        <td><a href="javascript:;" onclick="sywp(&#39;61523139&#39;)">使用</a></td>
+                        <td><a href="javascript:;" onclick="cswp(&#39;61523139&#39;)">出售</a></td>
+                        <td th:text="${ul.itemName}">档案室钥匙</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4"><span style="color:#0000FF">不显示超过20件以上的物品，如物品超过20件，请使用或出售掉多余的即可全部显示。</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+
+        </div>
+        <div class="c"></div>
+
+        <div class="line"></div>
+        </table>
+    </div>
+</div>
+<script language="JavaScript" src="./绯月ScarletMoon_files/global.js" th:src="@{/js/GamePageJs/global.js}"></script>
+<script language="JavaScript">
+    var openmenu = {'td_hack': 'menu_hack', 'td_skin': 'menu_skin'};
+    read.InitMenu();
+</script>
+
+</body>
+</html>

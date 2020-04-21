@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>WebGame </title>
+    <meta name="keywords" content="WebGameExeTest">
+    <meta name="description" content="WebGameExeTest">
+    <base href=".">
+    <link rel="stylesheet" type="text/css" href="./绯月ScarletMoon_files/style181231_1.css"
+          th:href="@{/css/GamePageCss/style.css}">
+
+    <script type="text/javascript" src="./绯月ScarletMoon_files/jquery-1.11.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+
+
+    <script language="JavaScript">
+        var imgpath = '1580388753';
+
+        function getObj(id) {
+            return document.getElementById(id);
+        }
+
+        function ietruebody() {
+            return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body;
+        }
+
+        function IsElement(id) {
+            return document.getElementById(id) != null ? true : false;
+        }
+
+        $(function () {
+            $("#kf_topuser,#kf_information").hover(function () {
+                $("#kf_information").show();
+            }, function () {
+                $("#kf_information").hide();
+            });
+        })
+
+    </script>
+
+
+</head>
+<body>
+<div></div>
+<div id="alldiv">
+
+    <div class="drow">
+
+
+        <div class="dcol" style="width:874px;padding-top:5px;">
+            <style type="text/css">
+                .kf_fw_ig1 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig1 td {
+                    height: 32px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig2 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig2 td {
+                    height: 50px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 50px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig2 td img {
+                    vertical-align: middle;
+                }
+
+                .kf_fw_ig3 td {
+                    height: 32px;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig4 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig4 td {
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 24px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig5 {
+                }
+
+                .kf_fw_ig5 td {
+                    vertical-align: top;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title1 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title2 {
+                    color: #000000;
+                    padding: 10px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title3 {
+                    padding: 5px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title4 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                }
+
+                .kf_fw_boxa li {
+                    padding: 3px 0;
+                }
+
+                .kf_fw_boxa a {
+                    color: #0000FF;
+                    background: #EEEEFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .kf_fw_boxa a:hover {
+                    text-decoration: none;
+                    color: #FFCC33;
+                    background: #FFFFFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .pk_log_ul li {
+                    padding: 0 5px;
+                }
+
+                .pk_log_j {
+                    text-align: left;
+                    background-color: #0075EA;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_g {
+                    text-align: left;
+                    background-color: #FFA6FF;
+                }
+
+                .pk_log_i {
+                    text-align: right;
+                    background-color: #FFB895;
+                    margin-right: 50%;
+                }
+
+                .pk_log_u {
+                    text-align: left;
+                    background-color: #FF9D9D;
+                    margin-left: 50%;
+                }
+
+                .pk_log_v {
+                    text-align: center;
+                    background-color: #00974B;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_f {
+                    text-align: center;
+                    background-color: #FC412C;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_h {
+                    text-align: center;
+                    background-color: #FF6060;
+                    color: #FFFFFF;
+                }
+
+                .ind01 {
+                    font-size: 14px;
+                    height: 40px;
+                    border: solid #9999ff 1px;
+                    padding: 10px 20px;
+                    line-height: 40px;
+                }
+
+                .ind01:hover {
+                    font-size: 14px;
+                    border: solid #99CCff 1px;
+                    text-decoration: none;
+                }
+
+                .pk_log_text li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                }
+
+                .pk_log_text_b li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                .pk_log_left {
+                    text-align: left;
+                    background-color: #FFDDDD;
+                    margin-right: 20px;
+                    border-top-right-radius: 10px;
+                    box-shadow: 1px 2px 1px #FF9999;
+                }
+
+                .pk_log_right {
+                    text-align: right;
+                    background-color: #DDDDFF;
+                    margin-left: 20px;
+                    border-top-left-radius: 10px;
+                    box-shadow: 1px 2px 1px #9999FF;
+                }
+
+                .pk_log_center {
+                    text-align: center;
+                    background-color: #DDFFDD;
+                    margin: 0 10px;
+                    border-radius: 5px;
+                    box-shadow: 1px 2px 1px #99FF99;
+                }
+
+                /*pt*/
+                .pk_tips {
+                    position: relative;
+                }
+
+                .pk_tips span {
+                    display: none;
+                    text-decoration: none;
+                    border: 1px solid #CCCCFF;
+                    background: #EEEEFF;
+                    padding: 5px;
+                    position: absolute;
+                    top: 90%;
+                    width: 240px;
+                    text-align: left;
+                }
+
+                .pk_tips:hover {
+                    background: none;
+                }
+
+                .pk_tips:hover span {
+                    display: block;
+                }
+
+                /*pt*/
+            </style>
+            <script language="JavaScript">
+                function checkset(chars) {
+                    if (!confirm(chars)) {
+                        return false;
+                    }
+                }
+            </script>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center">
+                    <tbody>
+                    <tr>
+                        <td class="kf_fw_ig_title1" style="margin-left: 7px;" th:text="${session.userName}+' [ KFB: '+${session.userKfb}+ ' ]'">&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="kf_fw_ig_title2" style="font-size:14px;"><a
+                                href="https://bbs.ikfol.com/kf_fw_ig_index.php" style="color:#ff0000;"
+                                th:href="@{/GamePage/gameMain.html}">争夺首页</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_mybp.php"
+                                th:href="@{/GamePage/gameItem.html}">我的物品</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_halo.php"
+                                th:href="@{/GamePage/gameBuff.html}">战力光环</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_pklist.php"
+                                th:href="@{/GamePage/gameRanking.html}">争夺排行</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_shop.php"
+                                    th:href="@{/GamePage/gameShop.html}">物品商店</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_readme.php?safeid=025f86f"
+                                    th:href="@{/GamePage/gameHelp.html}">帮助说明</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+            <script type="text/javascript">
+                var jgxh = 1;
+
+                function jgjg(xzid) {
+                    if (xzid == 1 || xzid == 99) {
+                        jgxh = 1;
+                    }
+                    if (jgxh == 1) {
+                        $.ajax({
+                            type: "POST",
+                            url: "kf_fw_ig_intel.php",
+                            data: "safeid=025f86f",
+                            success: function (msg) {
+                                if (msg != "no") {
+                                    $("#pk_text").prepend(msg);
+                                    if (xzid == 99 || xzid == 2) {
+                                        setTimeout("jgjg('2')", 1000);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+
+                function jgtz(tzid) {
+                    jgxh = 0;
+                }
+            </script>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig3">
+                    <tbody>
+                    <tr>
+                        <td colspan="4">
+
+                            错高峰福利：当前服务器状态[ <span style="color:#0000CC;font-weight:bold;">正常</span> ]<br>
+                            当服务器状态“空闲”时进行争夺，则攻击力附加（5%+75）点<br>
+                            当服务器状态“正常”时进行争夺，则攻击力附加（3%+45）点<br>
+                            当服务器状态“繁忙”时进行争夺，无福利。
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="25%"><input size="26" value="1546攻击力" type="text" readonly="" th:value="${session.gamersEntity.attack} + '攻击力'"></td>
+                        <td width="25%"><input size="26" value="武器等级[ 72 ] 经验:10521" type="text" readonly=""
+                                               th:value="'武器等级[ '+ ${session.userAttributesFromDataBase.wea_level} +' ]' + '经验:' + ${session.userAttributesFromDataBase.wea_exp}">
+                        </td>
+                        <td width="25%"><input size="26" value="[ 50 ]蕾米莉亚同人漫画" type="text" readonly=""
+                                               th:value="'[ ' + ${session.userAttributesFromDataBase.cartoon1} +' ]蕾米莉亚同人漫画'">
+                        </td>
+                        <td width="25%"></td>
+                    </tr>
+                    <tr>
+                        <td><input size="26" value="0/12700生命值" type="text" readonly="" th:value="${session.gamersEntity.totalHeath} + '生命值'"></td>
+                        <td><input size="26" value="护甲等级[ 68 ] 经验:9355" type="text" readonly=""
+                                   th:value="'护甲等级[ '+ ${session.userAttributesFromDataBase.arm_level}  + ' ]' + '经验:'+${session.userAttributesFromDataBase.arm_exp}">
+                        </td>
+                        <td><input size="26" value="[ 48 ]十六夜同人漫画" type="text" readonly=""
+                                   th:value="'[ '+ ${session.userAttributesFromDataBase.cartoon2} +' ]十六夜同人漫画'"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input size="26" value="1210攻击速度" type="text" readonly="" th:value="${session.gamersEntity.speed}+'攻击速度'"></td>
+                        <td><input size="26" value="项链等级[ 0 ] 经验:0" type="text" readonly=""></td>
+                        <td><input size="26" value="[ 24 ]档案室钥匙" type="text" readonly=""
+                                   th:value="'[ '+ ${session.userAttributesFromDataBase.room_key}  + ' ]档案室钥匙'"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input size="26" value="27.18%减伤" type="text" readonly="" th:value="${session.gamersEntity.reduceDamage}+'减伤'"></td>
+                        <td><input size="26" value="&#160;&#160;" type="text" readonly=""></td>
+                        <td><input size="26" value="[ 29 ]傲娇LOLI娇蛮音CD" type="text" readonly=""
+                                   th:value="'[ '+ ${session.userAttributesFromDataBase.cd}  + ' ]傲娇LOLI娇蛮音CD'"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input size="26" value="530 可分配属性" type="text" readonly=""
+                                   th:value="${session.userAttributesFromDataBase.assignable}+' 可分配属性'"></td>
+                        <td><input size="26" value="&#160;&#160;" type="text" readonly=""></td>
+                        <td><input size="26" value="[ 10 ]消逝之药" type="text" readonly=""
+                                   th:value="'[ '+ ${session.userAttributesFromDataBase.med}  +' ]消逝之药'"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input size="26" value="最高达成 129 层" type="text" readonly=""
+                                   th:value="'最高达成 '+${session.userAttributesFromDataBase.floor}+' 层'"></td>
+                        <td><input size="26" value="商店当日剩余购买次数[ ]" type="text" readonly=""></td>
+                        <td><input size="26" value="[ 10 ]整形优惠卷" type="text" readonly=""
+                                   th:value="'[ '+ ${session.userAttributesFromDataBase.coupon}  +' ]整形优惠卷'"></td>
+                        <td><a href="javascript:;" onclick="$('#wdsx').toggle();" class="indregister">打开/关闭个人属性/装备</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+            <div id="wdsx" style="width:860px;display:none;">
+                <form name="rvrc1" action="https://bbs.ikfol.com/kf_fw_ig_enter.php" method="post">
+                    <input name="lx" type="hidden" value="1">
+                    <table width="100%" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig1">
+                        <tbody>
+                        <tr>
+                            <td colspan="2" style="line-height:normal;">（装备中）<span style="color:#FF6600;">传奇的长剑</span> -
+                                攻击力+（力量敏捷智力属性*1），并替换技能破空斩（攻击力 + 全属性*2），每减少3%生命值增加1%攻击速度1%暴击几率1%技能释放几率<br>神秘属性：<span
+                                        style="color:#FF0066;">火神秘：燃烧，每次攻击增加(对方总生命值5%)的伤害，单局内无限叠加</span>。<br>主属性：穿透对方意志(等级x1)。增加攻击力(等级x5)。增加速度(等级x2)。增加技能伤害(等级x1%)。<br>从属性：技能(系数(x3)x0.5%)。攻击(智力x0.3%)。穿透(智力x0.3%)。技能(敏捷x0.3%)。速度(敏捷x0.4%)。暴击(智力x0.3%)。暴击(敏捷x0.3%)。暴击(系数(x3)x0.4%)。<br>（装备中）<span
+                                        style="color:#FF6600;">传奇的铠甲</span> - 意志+10%<br>主属性：每减少5%生命值获得额外意志(等级x1)。获得无护甲魔法盾500+(等级x20)。被攻击回血100+(等级x5)。反弹对方实际伤害15%+(等级x0.1%)。<br>从属性：加防(系数(x3)x0.3%)。暴减(灵活x0.5%)。回血(体质x0.5%)。回血(体质x0.2%)。回血(体质x0.4%)。回血(系数(x3)x0.3%)。反伤(体质x0.2%)。加防(系数(x3)x0.3%)。<br><br>最终加成：<br>攻击伤害+415
+                                | 攻击速度+382 | 暴击伤害+0% | 技能伤害+239% | 穿透意志+83 | 生命偷取+0<br>受伤回血+2904 | 魔法护盾+1860 | 减血加甲+156
+                                | 反弹伤害+29.9% | 暴击减伤0 | 技能减伤0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="40%">力量 (每点+5攻击力)</td>
+                            <td width="60%"><input size="3" maxlength="3" name="s1" value="1" type="text" th:value="${session.userAttributesFromDataBase.snh}"> <span
+                                    style="color:#009900;" ></span></td>
+                        </tr>
+                        <tr>
+                            <td>体质 (每点+20生命值)</td>
+                            <td><input size="3" maxlength="3" name="s2" value="322" type="text" th:value="${session.userAttributesFromDataBase.phy}"> <span
+                                    style="color:#009900;"></span></td>
+                        </tr>
+                        <tr>
+                            <td>敏捷 (每点+2攻击速度)</td>
+                            <td><input size="3" maxlength="3" name="d1" value="204" type="text"th:value="${session.userAttributesFromDataBase.agi}"> <span
+                                    style="color:#009900;"></span></td>
+                        </tr>
+                        <tr>
+                            <td>灵活 (暴击率=灵活/(灵活+100)%)</td>
+                            <td><input size="3" maxlength="3" name="d2" value="1" type="text" th:value="${session.userAttributesFromDataBase.dex}"> <span
+                                    style="color:#009900;"></span></td>
+                        </tr>
+                        <tr>
+                            <td>智力 (技能释放=智力/(智力+90)%)</td>
+                            <td><input size="3" maxlength="3" name="i1" value="1" type="text" th:value="${session.userAttributesFromDataBase.wis}"> <span
+                                    style="color:#009900;"></span></td>
+                        </tr>
+                        <tr>
+                            <td>意志 (防御=意志/(意志+150)%)</td>
+                            <td><input size="3" maxlength="3" name="i2" value="1" type="text" th:value="${session.userAttributesFromDataBase.mnd}"> <span
+                                    style="color:#009900;"></span></td>
+                        </tr>
+                        <tr>
+                            <td>耐力 (战斗后回复(耐力%)最大生命值)</td>
+                            <td><input size="3" maxlength="3" name="p" value="0" type="text" readonly=""> <span
+                                    style="color:#009900;">+8 (不可加点)</span></td>
+                        </tr>
+                        <tr>
+                            <td>幸运 (大幅提高各种运气事件成功率)</td>
+                            <td><input size="3" maxlength="3" name="l" value="0" type="text" readonly=""> <span
+                                    style="color:#009900;">+0 (不可加点)</span></td>
+                        </tr>
+                        <tr>
+                            <td><input class="btn" type="submit" name="prosubmit" value="修改点数分配"></td>
+                            <td>(当前修改配点可用[6]次)</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="line"></div>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig1">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div style="text-align:center;height:60px;line-height:60px;">
+                                <a href="javascript:;" onclick="jgjg(&#39;1&#39;)" class="ind01">战斗（前进一层楼）</a>
+                                <a href="javascript:;" onclick="jgjg(&#39;99&#39;)" class="ind01">战斗（前进至结束）</a>
+                                <a href="javascript:;" onclick="jgtz(&#39;1&#39;)" class="ind01">暂停（在本层等待）</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left:0;background-color:#F3F3F3;">
+                            <div id="pk_text_div">
+                                <ul id="pk_text" class="pk_log_ul">
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">130</span>
+                                        层]你(7181)遭遇了[BOSS的]NPC(52000血|7605攻|1950速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(39936)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =345）和（减少智力之和 x 33% =329）</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-1378伤害<span style="color:#FF0000;">+412反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#ff0000;">暴击！</span>对方受到-947伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2497伤害<span style="color:#FF0000;">+746反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-770伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3615伤害<span style="color:#FF0000;">+1080反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-3901伤害<span
+                                            style="color:#FF0000;">+1166反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1067伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3066伤害<span style="color:#FF0000;">+916反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1364伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3832伤害<span style="color:#FF0000;">+1145反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-3941伤害<span
+                                            style="color:#FF0000;">+1178反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1660伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3621伤害<span style="color:#FF0000;">+1082反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1957伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-4189伤害<span style="color:#FF0000;">+1252反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-8656伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-4555伤害<span style="color:#FF0000;">+1361反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-4759伤害<span style="color:#FF0000;">+1422反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_f">你被击败了</li>
+                                    <li class="pk_log_v">敌人掉落了[ 26 个 传奇盒子 ]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">129</span>
+                                        层]你(9508)遭遇了[普通的]NPC(25800血|5031攻|1290速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(19814)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =291）和（减少智力之和 x 33% =275）</li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-388伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-1248伤害<span style="color:#FF0000;">+373反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3643伤害<span style="color:#FF0000;">+1089反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-564伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3500伤害<span style="color:#FF0000;">+1046反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-740伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3551伤害<span style="color:#FF0000;">+1061反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-916伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3736伤害<span style="color:#FF0000;">+1117反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-4918伤害</li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1268伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-4032伤害<span style="color:#FF0000;">+1205反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#ff0000;">暴击！</span>对方受到-2888伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3961伤害<span style="color:#FF0000;">+1184反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1620伤害</li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:43%;">生命值[7181 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">128</span>
+                                        层]你(2905)遭遇了[普通的]NPC(25600血|4992攻|1280速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(19661)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =289）和（减少智力之和 x 33% =273）</li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-389伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-479伤害<span style="color:#FF0000;">+143反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-565伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-974伤害<span
+                                            style="color:#FF0000;">+291反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-741伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-1288伤害<span
+                                            style="color:#FF0000;">+385反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-917伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-1639伤害<span style="color:#FF0000;">+490反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-4931伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2819伤害<span style="color:#FF0000;">+842反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1269伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-4341伤害<span style="color:#FF0000;">+1297反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1445伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3201伤害<span style="color:#FF0000;">+957反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-6721伤害</li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:25%;">生命值[9508 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">127</span>
+                                        层]你(7274)遭遇了[特别睿智的]NPC(7620血|1485攻|890速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(5852)</li>
+                                    <li class="pk_log_g">特别睿智的NPC开局释放了风之祝福(速度+457(10%智力))</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =109）和（减少智力之和 x 33% =1541）</li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-777伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">魔力漩涡！</span>你受到-6886伤害<span
+                                            style="color:#FF0000;">+2058反弹</span>(护盾-1860)<span style="color:#00974B;">+2904恢复</span>
+                                    </li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-931伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">魔力漩涡！</span>你受到-4307伤害<span style="color:#FF0000;">+1287反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#ff0000;">暴击！</span>对方受到-2169伤害</li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:77%;">生命值[2905 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">126</span>
+                                        层]你(3110)遭遇了[普通的]NPC(25200血|4914攻|1260速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(19354)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =285）和（减少智力之和 x 33% =269）</li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-2572伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-180伤害<span
+                                            style="color:#FF0000;">+53反弹</span>(护盾-1860)<span style="color:#00974B;">+2904恢复</span>
+                                    </li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-568伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-522伤害<span
+                                            style="color:#FF0000;">+156反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-743伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-1775伤害<span
+                                            style="color:#FF0000;">+530反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-919伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2336伤害<span style="color:#FF0000;">+698反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-4956伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-1734伤害<span
+                                            style="color:#FF0000;">+518反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1271伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-6948伤害<span style="color:#FF0000;">+2077反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1447伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3095伤害<span style="color:#FF0000;">+925反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1622伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3494伤害<span style="color:#FF0000;">+1044反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:43%;">生命值[7274 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">125</span>
+                                        层]你(8167)遭遇了[特别睿智的]NPC(7500血|1464攻|876速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(5760)</li>
+                                    <li class="pk_log_g">
+                                        特别睿智的NPC献祭了自己90%生命释放了一张均贫卡,造成你与它生命值80%差额的无视护甲伤害(NPC10%生命值减去玩家当前生命值所得绝对值的80%)
+                                    </li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =108）和（减少智力之和 x 33% =1517）</li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-786伤害</li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:76%;">生命值[3110 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">124</span>
+                                        层]你(9694)遭遇了[普通的]NPC(24800血|4836攻|1240速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(19046)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =281）和（减少智力之和 x 33% =265）</li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-395伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-1412伤害<span style="color:#FF0000;">+422反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-571伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-3502伤害<span
+                                            style="color:#FF0000;">+1047反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-746伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2692伤害<span style="color:#FF0000;">+804反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-922伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-2189伤害<span
+                                            style="color:#FF0000;">+654反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1097伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-7829伤害<span style="color:#FF0000;">+2340反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1273伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2201伤害<span style="color:#FF0000;">+658反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-6173伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3046伤害<span style="color:#FF0000;">+910反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1624伤害</li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:36%;">生命值[8167 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">123</span>
+                                        层]你(8688)遭遇了[普通的]NPC(24600血|4797攻|1230速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(18893)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =279）和（减少智力之和 x 33% =263）</li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-397伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-1016伤害<span style="color:#FF0000;">+303反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-572伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2670伤害<span style="color:#FF0000;">+798反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-748伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-2171伤害<span
+                                            style="color:#FF0000;">+649反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-923伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-7765伤害<span style="color:#FF0000;">+2321反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1099伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2183伤害<span style="color:#FF0000;">+652反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1274伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-3022伤害<span
+                                            style="color:#FF0000;">+903反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-6187伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-1511伤害<span
+                                            style="color:#FF0000;">+451反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1625伤害</li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:24%;">生命值[9694 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">122</span>
+                                        层]你(8524)遭遇了[普通的]NPC(24400血|4758攻|1220速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(18739)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =277）和（减少智力之和 x 33% =261）</li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-398伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-1006伤害<span style="color:#FF0000;">+300反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-574伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-1324伤害<span
+                                            style="color:#FF0000;">+395反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-749伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-6161伤害<span style="color:#FF0000;">+1842反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-925伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2440伤害<span style="color:#FF0000;">+729反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1100伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3533伤害<span style="color:#FF0000;">+1056反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1275伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-3812伤害<span
+                                            style="color:#FF0000;">+1139反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">破空斩！</span>对方受到-11117伤害
+                                    </li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:32%;">生命值[8688 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">121</span>
+                                        层]你(3814)遭遇了[普通的]NPC(24200血|4719攻|1210速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(18586)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =275）和（减少智力之和 x 33% =259）</li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-2647伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-509伤害<span style="color:#FF0000;">+152反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-575伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-1002伤害<span style="color:#FF0000;">+299反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-3836伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-1705伤害<span style="color:#FF0000;">+509反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-926伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2804伤害<span style="color:#FF0000;">+838反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1101伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3504伤害<span style="color:#FF0000;">+1047反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1276伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span>你受到-3781伤害<span
+                                            style="color:#FF0000;">+1130反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1452伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3329伤害<span style="color:#FF0000;">+995反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1627伤害</li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-7402伤害</li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:33%;">生命值[8524 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">120</span>
+                                        层]你(12231)遭遇了[BOSS的]NPC(48000血|7020攻|1800速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(36864)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =321）和（减少智力之和 x 33% =305）</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-8870伤害<span style="color:#FF0000;">+2652反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-2746伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-745伤害<span
+                                            style="color:#FF0000;">+222反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-782伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-2881伤害<span style="color:#FF0000;">+861反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3601伤害<span style="color:#FF0000;">+1076反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-4749伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3963伤害<span style="color:#FF0000;">+1184反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#ff0000;">暴击！</span>对方受到-2745伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-3993伤害<span style="color:#FF0000;">+1193反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-1668伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-4178伤害<span style="color:#FF0000;">+1249反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#0000ff;">破空斩！</span>对方受到-7753伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">狂暴怒吼！</span>你受到-4492伤害<span style="color:#FF0000;">+1343反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-2465伤害<span
+                                            style="color:#FF0000;">+737反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#ff0000;">暴击！</span>对方受到-4517伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#0000ff;">狂暴怒吼！</span>你受到-3285伤害<span
+                                            style="color:#FF0000;">+982反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：<span style="color:#ff0000;">暴击！</span>对方受到-5108伤害</li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:70%;">生命值[3814 / 12700]</li>
+                                    <li class="pk_log_j">在[ <span style="font-size:24px;">119</span>
+                                        层]你(12700)遭遇了[特别快速的]NPC(7140血|1392攻|5950速)
+                                    </li>
+                                    <li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(5484)</li>
+                                    <li class="pk_log_g">你拥有一个魔法护盾(1860)，护盾本身不计算护甲，每次战斗自动补满。</li>
+                                    <li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =747）和（减少智力之和 x 33% =88）</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">乘风加速！</span>你受到-4728伤害<span style="color:#FF0000;">+1413反弹</span>(护盾-1860)<span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">乘风加速！</span>你受到-2419伤害<span style="color:#FF0000;">+723反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">乘风加速！</span>你受到-2419伤害<span style="color:#FF0000;">+723反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">乘风加速！</span>你受到-3462伤害<span style="color:#FF0000;">+1035反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_i">你发起了进攻：对方受到-809伤害</li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">乘风加速！</span>你受到-2419伤害<span style="color:#FF0000;">+723反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_u">被攻击：<span style="color:#ff0000;">暴击！</span><span
+                                            style="color:#0000ff;">乘风加速！</span>你受到-3462伤害<span style="color:#FF0000;">+1035反弹</span><span
+                                            style="color:#00974B;">+2904恢复</span></li>
+                                    <li class="pk_log_v">你胜利了</li>
+                                    <li class="pk_log_h" style="margin-right:4%;">生命值[12231 / 12700]</li>
+                                    <li class="pk_log_g">点击上方按钮自动战斗下一层</li>
+                                    <li class="pk_log_i">根据双方属性攻击</li>
+                                    <li class="pk_log_u">或者被攻击</li>
+                                    <li class="pk_log_v">直到胜利获得奖励，请点击这里开始争夺战斗</li>
+                                    <li class="pk_log_f">或者失败后明天再来，每天自动重置</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+
+        </div>
+        <div class="c"></div>
+
+        <div class="line"></div>
+    </div>
+</div>
+<script language="JavaScript" src="./绯月ScarletMoon_files/global.js" th:src="@{/js/GamePageJs/global.js}"></script>
+<script language="JavaScript">
+    var openmenu = {'td_hack': 'menu_hack', 'td_skin': 'menu_skin'};
+    read.InitMenu();
+</script>
+
+</body>
+</html>

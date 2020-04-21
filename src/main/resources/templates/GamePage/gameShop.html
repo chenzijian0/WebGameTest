@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>WebGame </title>
+    <meta name="keywords" content="WebGameExeTest">
+    <meta name="description" content="WebGameExeTest">
+    <base href=".">
+    <link rel="stylesheet" type="text/css" href="./绯月ScarletMoon_files/style181231_1.css"
+          th:href="@{/css/GamePageCss/style.css}">
+
+    <script type="text/javascript" src="./绯月ScarletMoon_files/jquery-1.11.1.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+
+
+    <script language="JavaScript">
+        var imgpath = '1584630169';
+
+        function getObj(id) {
+            return document.getElementById(id);
+        }
+
+        function ietruebody() {
+            return (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body;
+        }
+
+        function IsElement(id) {
+            return document.getElementById(id) != null ? true : false;
+        }
+
+        $(function () {
+            $("#kf_topuser,#kf_information").hover(function () {
+                $("#kf_information").show();
+            }, function () {
+                $("#kf_information").hide();
+            });
+        })
+
+    </script>
+
+
+    <style>
+        /* 公共 */
+        .pd_highlight {
+            color: #f00 !important;
+        }
+
+        .pd_notice, .pd_msg .pd_notice {
+            font-style: italic;
+            color: #666;
+        }
+
+        .pd_input, .pd_cfg_main input, .pd_cfg_main select {
+            vertical-align: middle;
+            height: auto;
+            margin-right: 0;
+            line-height: 22px;
+            font-size: 12px;
+        }
+
+        .pd_input[type="text"], .pd_input[type="number"], .pd_cfg_main input[type="text"], .pd_cfg_main input[type="number"] {
+            height: 22px;
+            line-height: 22px;
+        }
+
+        .pd_input:focus, .pd_cfg_main input[type="text"]:focus, .pd_cfg_main input[type="number"]:focus, .pd_cfg_main textarea:focus,
+        .pd_textarea:focus {
+            border-color: #7eb4ea;
+        }
+
+        .pd_textarea, .pd_cfg_main textarea {
+            border: 1px solid #ccc;
+            font-size: 12px;
+        }
+
+        .pd_btn_link {
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+
+        .pd_custom_tips {
+            cursor: help;
+        }
+
+        .pd_disabled_link {
+            color: #999 !important;
+            text-decoration: none !important;
+            cursor: default;
+        }
+
+        .pd_not_click_link, .pd_not_click_link:visited {
+            color: #000;
+            pointer-events: none;
+        }
+
+        hr {
+            box-sizing: content-box;
+            height: 0;
+            margin-top: 7px;
+            margin-bottom: 7px;
+            border: 0;
+            border-top: 1px solid rgba(0, 0, 0, .2);
+        }
+
+        .pd_overflow {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .pd_hide {
+            width: 0 !important;
+            height: 0 !important;
+            font: 0/0 a;
+            color: transparent;
+            background-color: transparent;
+            border: 0 !important;
+        }
+
+        .pd_stat i {
+            display: inline-block;
+            font-style: normal;
+            margin-right: 3px;
+        }
+
+        .pd_stat_extra em, .pd_stat_extra ins {
+            padding: 0 2px;
+            cursor: help;
+        }
+
+        .pd_panel {
+            position: absolute;
+            overflow-y: auto;
+            background-color: #fff;
+            border: 1px solid #9191ff;
+            opacity: 0.9;
+        }
+
+        .pd_title_tips {
+            position: absolute;
+            max-width: 470px;
+            font-size: 12px;
+            line-height: 1.5em;
+            padding: 2px 5px;
+            background-color: #fcfcfc;
+            border: 1px solid #767676;
+            z-index: 9999;
+        }
+
+        .pd_search_type {
+            float: left;
+            height: 26px;
+            line-height: 26px;
+            width: 65px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-right: none;
+            cursor: pointer;
+        }
+
+        .pd_search_type i {
+            font-style: normal;
+            margin-left: 5px;
+            font-family: sans-serif;
+        }
+
+        .pd_search_type_list {
+            position: absolute;
+            width: 63px;
+            background-color: #fcfcfc;
+            border: 1px solid #ccc;
+            border-top: none;
+            line-height: 26px;
+            text-indent: 13px;
+            cursor: pointer;
+            z-index: 1004;
+        }
+
+        .pd_search_type_list li:hover {
+            color: #fff;
+            background-color: #87c3cf;
+        }
+
+        .drow {
+            z-index: 1001 !important;
+        }
+
+        /* 消息框 */
+        .pd_mask {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .pd_msg_container {
+            position: fixed;
+            width: 100%;
+            z-index: 1003;
+        }
+
+        .pd_msg {
+            border: 1px solid #6ca7c0;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+            padding: 10px 40px;
+            text-align: center;
+            font-size: 14px;
+            position: absolute;
+            display: none;
+            color: #333;
+            line-height: 1.6em;
+            background: #f8fcfe;
+            background-repeat: no-repeat;
+            background-image: -webkit-linear-gradient(#f9fcfe, #f6fbfe 25%, #eff7fc);
+            background-image: -moz-linear-gradient(top, #f9fcfe, #f6fbfe 25%, #eff7fc);
+            background-image: -ms-linear-gradient(#f9fcfe, #f6fbfe 25%, #eff7fc);
+            background-image: linear-gradient(#f9fcfe, #f6fbfe 25%, #eff7fc);
+        }
+
+        .pd_msg strong {
+            margin-right: 5px;
+        }
+
+        .pd_msg i {
+            font-style: normal;
+            padding-left: 10px;
+        }
+
+        .pd_msg em, .pd_stat em, .pd_msg ins, .pd_stat ins {
+            font-weight: 700;
+            font-style: normal;
+            color: #ff6600;
+            padding: 0 3px;
+        }
+
+        .pd_msg ins, .pd_stat ins {
+            text-decoration: none;
+            color: #339933;
+        }
+
+        .pd_msg a {
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        /* 帖子页面 */
+        .readtext .pd_goto_link {
+            color: #000;
+        }
+
+        .readtext .pd_goto_link:hover {
+            color: #51d;
+        }
+
+        .pd_multi_quote_chk {
+            margin-right: 2px;
+            float: right;
+        }
+
+        .pd_fast_goto_floor {
+            margin-right: 10px !important;
+            line-height: 32px;
+        }
+
+        .pd_user_memo {
+            font-size: 12px;
+            color: #999;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .readtext img[onclick] {
+            width: auto;
+            max-width: 850px;
+        }
+
+        .read_fds {
+            text-align: left !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .pd_code_area {
+            max-height: 550px;
+            margin-top: 1em;
+            overflow-y: auto;
+            font-size: 12px;
+            font-family: Consolas, "Courier New";
+        }
+
+        .pd_code_area .pd_copy_code {
+            position: absolute;
+            margin-top: -1em;
+            min-width: 5em;
+            text-align: center;
+            background-color: #fffbf4;
+            height: 20px;
+        }
+
+        .pd_good_post_mark {
+            outline: 3px solid #f00;
+            outline-offset: -3px;
+        }
+
+        .pd_follow_highlight {
+            box-shadow: 0 0 3px 1px #ff9933 !important;
+        }
+
+        /* 我的物品页面 */
+        .pd_item_btns {
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .pd_item_btns button, .pd_item_btns input {
+            margin-bottom: 2px;
+            vertical-align: middle;
+        }
+
+        .pd_result {
+            border: 1px solid #99f;
+            padding: 5px;
+            margin-top: 10px;
+            line-height: 2em;
+        }
+
+        .pd_arm_equipped {
+            background-color: #eef;
+            -webkit-box-shadow: 0 0 7px #99f;
+            box-shadow: 0 0 7px #99f;
+        }
+
+        .pd_arm_equipped > td:nth-child(3)::before {
+            content: "（装备中）";
+            font-weight: bold;
+        }
+
+        .pd_arm_equipped a[data-name="equip"], .pd_arm_equipped a[data-name="smelt"] {
+            color: #777;
+            pointer-events: none;
+        }
+
+        .kf_fw_ig4 > tbody > tr > td {
+            position: relative;
+        }
+
+        .kf_fw_ig4 > tbody > tr > td[data-memo]::after {
+            content: "(" attr(data-memo) ")";
+            position: absolute;
+            bottom: 0;
+            right: 5px;
+            padding: 0 5px;
+            color: #777;
+            background: rgba(252, 252, 252, .7);
+        }
+
+        .kf_fw_ig4 > tbody > .pd_arm_equipped > td[data-memo]::after {
+            background: rgba(238, 238, 255, .7);
+        }
+
+        .kf_fw_ig4 > tbody > tr > td > input[name="armCheck"] {
+            position: absolute;
+            top: 0;
+            left: 5px;
+        }
+
+        .show_arm_info {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 10px;
+            background: rgba(252, 252, 252, .9);
+        }
+
+        .pd_arm_equipped .show_arm_info {
+            background: rgba(238, 238, 255, .9);
+        }
+
+        .pd_useless_sub_property {
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .pd_arm_id {
+            font-style: normal;
+            color: #999;
+        }
+
+        .pd_new_arm_mark {
+            font-style: normal;
+            color: #f00;
+        }
+
+        /* 发帖页面 */
+        #pdSmilePanel img {
+            margin: 3px;
+            cursor: pointer;
+        }
+
+        .editor-button .pd_editor_btn {
+            background: none;
+            text-indent: 0;
+            line-height: 18px;
+            cursor: default;
+        }
+
+        .pd_post_extra_option {
+            text-align: left;
+            margin: 5px;
+        }
+
+        .pd_post_extra_option input {
+            vertical-align: middle;
+            height: auto;
+            margin-right: 0;
+        }
+
+        /* 其它页面 */
+        .pd_thread_page {
+            margin-left: 5px;
+        }
+
+        .pd_thread_page a {
+            color: #444;
+            padding: 0 3px;
+        }
+
+        .pd_thread_page a:hover {
+            color: #51d;
+        }
+
+        .pd_card_chk {
+            position: absolute;
+            bottom: -8px;
+            left: 1px;
+        }
+
+        .indexlbtit2 .pd_thread_goto, .rightlbtit .pd_thread_goto {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            width: 65px;
+            border: none;
+        }
+
+        .indexlbtit2 .pd_thread_goto:hover, .rightlbtit .pd_thread_goto:hover {
+            border: none;
+        }
+
+        .pd_id_color_select > td {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .pd_id_color_select > td > input {
+            position: absolute;
+            top: 18px;
+            left: 10px;
+        }
+
+        #pdPropertiesArea td {
+            position: relative;
+        }
+
+        #pdPropertiesArea input[type="text"] {
+            width: 211px;
+        }
+
+        .pd_property_diff {
+            position: absolute;
+            top: 0px;
+            right: 5px;
+        }
+
+        .pd_property_diff em {
+            font-style: normal;
+        }
+
+        .rightbox1 {
+            overflow: hidden;
+        }
+
+        .pd_rightbox1_gray, .pd_rightbox1_gray:visited, .pd_rightbox1_gray:hover {
+            color: #b0b0ff;
+            border-color: #b0b0ff;
+        }
+
+        /* 设置对话框 */
+        .pd_cfg_ml {
+            margin-left: 10px;
+        }
+
+        .pd_cfg_box {
+            position: fixed;
+            border: 1px solid #9191ff;
+            display: none;
+            z-index: 1002;
+            -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .pd_cfg_box h1 {
+            text-align: center;
+            font-size: 14px;
+            background-color: #9191ff;
+            color: #fff;
+            line-height: 2em;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .pd_cfg_box h1 span {
+            float: right;
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
+        .pd_cfg_nav {
+            text-align: right;
+            margin-top: 5px;
+            margin-bottom: -5px;
+        }
+
+        .pd_cfg_main {
+            background-color: #fcfcfc;
+            padding: 0 10px;
+            font-size: 12px;
+            line-height: 24px;
+            min-height: 50px;
+            overflow: auto;
+        }
+
+        .pd_cfg_main fieldset {
+            border: 1px solid #ccccff;
+            padding: 0 6px 6px;
+        }
+
+        .pd_cfg_main legend {
+            font-weight: bold;
+        }
+
+        .pd_cfg_main input[type="color"] {
+            height: 18px;
+            width: 30px;
+            padding: 0;
+        }
+
+        .pd_cfg_tips {
+            color: #51d;
+            text-decoration: none;
+            cursor: help;
+        }
+
+        .pd_cfg_tips:hover {
+            color: #ff0000;
+        }
+
+        #pdConfigDialog .pd_cfg_main {
+            overflow-x: hidden;
+            white-space: nowrap;
+        }
+
+        .pd_cfg_panel {
+            display: inline-block;
+            width: 400px;
+            vertical-align: top;
+        }
+
+        .pd_cfg_panel + .pd_cfg_panel {
+            margin-left: 5px;
+        }
+
+        .pd_cfg_btns {
+            background-color: #fcfcfc;
+            text-align: right;
+            padding: 5px;
+        }
+
+        .pd_cfg_btns input, .pd_cfg_btns button {
+            vertical-align: middle;
+        }
+
+        .pd_cfg_btns button {
+            min-width: 80px;
+        }
+
+        .pd_cfg_about {
+            float: left;
+            line-height: 24px;
+            margin-left: 5px;
+        }
+
+        .pd_custom_script_header {
+            margin: 7px 0;
+            padding: 5px;
+            background-color: #e8e8e8;
+            border-radius: 5px;
+        }
+
+        .pd_custom_script_content {
+            display: none;
+            width: 750px;
+            height: 350px;
+            white-space: pre;
+        }
+
+        /* 日志对话框 */
+        .pd_log_nav {
+            text-align: center;
+            margin: -5px 0 -12px;
+            font-size: 14px;
+            line-height: 44px;
+        }
+
+        .pd_log_nav a {
+            display: inline-block;
+        }
+
+        .pd_log_nav h2 {
+            display: inline;
+            font-size: 14px;
+            margin-left: 7px;
+            margin-right: 7px;
+        }
+
+        .pd_log_content {
+            height: 242px;
+            overflow: auto;
+        }
+
+        .pd_log_content h3 {
+            display: inline-block;
+            font-size: 12px;
+            line-height: 22px;
+            margin: 0;
+        }
+
+        .pd_log_content h3:not(:first-child) {
+            margin-top: 5px;
+        }
+
+        .pd_log_content p {
+            line-height: 22px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div id="alldiv">
+
+    <div class="drow">
+
+
+
+        <div class="dcol" style="width:874px;padding-top:5px;">
+
+            <style type="text/css">
+                .kf_fw_ig1 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig1 td {
+                    height: 32px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig2 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig2 td {
+                    height: 50px;
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 50px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig2 td img {
+                    vertical-align: middle;
+                }
+
+                .kf_fw_ig3 td {
+                    height: 32px;
+                    line-height: 32px;
+                    padding-left: 5px;
+                }
+
+                .kf_fw_ig4 {
+                    border-top: 1px solid #9999ff;
+                    border-right: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig4 td {
+                    border-bottom: 1px solid #9999ff;
+                    border-left: 1px solid #9999ff;
+                    line-height: 24px;
+                    text-align: center;
+                }
+
+                .kf_fw_ig5 {
+                }
+
+                .kf_fw_ig5 td {
+                    vertical-align: top;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title1 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                    padding: 5px;
+                }
+
+                .kf_fw_ig_title2 {
+                    color: #000000;
+                    padding: 10px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title3 {
+                    padding: 5px;
+                    border-bottom: 1px solid #9999ff;
+                }
+
+                .kf_fw_ig_title4 {
+                    color: #ffffff;
+                    background-color: #9999ff;
+                }
+
+                .kf_fw_boxa li {
+                    padding: 3px 0;
+                }
+
+                .kf_fw_boxa a {
+                    color: #0000FF;
+                    background: #EEEEFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .kf_fw_boxa a:hover {
+                    text-decoration: none;
+                    color: #FFCC33;
+                    background: #FFFFFF;
+                    display: block;
+                    width: 118px;
+                    height: 36px;
+                    line-height: 36px;
+                    text-align: center;
+                    border: 1px solid #9999ff;
+                }
+
+                .pk_log_ul li {
+                    padding: 0 5px;
+                }
+
+                .pk_log_j {
+                    text-align: left;
+                    background-color: #0075EA;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_g {
+                    text-align: left;
+                    background-color: #FFA6FF;
+                }
+
+                .pk_log_i {
+                    text-align: right;
+                    background-color: #FFB895;
+                    margin-right: 50%;
+                }
+
+                .pk_log_u {
+                    text-align: left;
+                    background-color: #FF9D9D;
+                    margin-left: 50%;
+                }
+
+                .pk_log_v {
+                    text-align: center;
+                    background-color: #00974B;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_f {
+                    text-align: center;
+                    background-color: #FC412C;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .pk_log_h {
+                    text-align: center;
+                    background-color: #FF6060;
+                    color: #FFFFFF;
+                }
+
+                .ind01 {
+                    font-size: 14px;
+                    height: 40px;
+                    border: solid #9999ff 1px;
+                    padding: 10px 20px;
+                    line-height: 40px;
+                }
+
+                .ind01:hover {
+                    font-size: 14px;
+                    border: solid #99CCff 1px;
+                    text-decoration: none;
+                }
+
+                .pk_log_text li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                }
+
+                .pk_log_text_b li {
+                    padding: 2px;
+                    margin-bottom: 7px;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                .pk_log_left {
+                    text-align: left;
+                    background-color: #FFDDDD;
+                    margin-right: 20px;
+                    border-top-right-radius: 10px;
+                    box-shadow: 1px 2px 1px #FF9999;
+                }
+
+                .pk_log_right {
+                    text-align: right;
+                    background-color: #DDDDFF;
+                    margin-left: 20px;
+                    border-top-left-radius: 10px;
+                    box-shadow: 1px 2px 1px #9999FF;
+                }
+
+                .pk_log_center {
+                    text-align: center;
+                    background-color: #DDFFDD;
+                    margin: 0 10px;
+                    border-radius: 5px;
+                    box-shadow: 1px 2px 1px #99FF99;
+                }
+
+                /*pt*/
+                .pk_tips {
+                    position: relative;
+                }
+
+                .pk_tips span {
+                    display: none;
+                    text-decoration: none;
+                    border: 1px solid #CCCCFF;
+                    background: #EEEEFF;
+                    padding: 5px;
+                    position: absolute;
+                    top: 90%;
+                    width: 240px;
+                    text-align: left;
+                }
+
+                .pk_tips:hover {
+                    background: none;
+                }
+
+                .pk_tips:hover span {
+                    display: block;
+                }
+
+                /*pt*/
+            </style>
+            <script language="JavaScript">
+                function checkset(chars) {
+                    if (!confirm(chars)) {
+                        return false;
+                    }
+                }
+            </script>
+            <div style="width:860px;">
+                <table width="860" cellspacing="0" cellpadding="0" align="center">
+                    <tbody>
+                    <tr>
+                        <td class="kf_fw_ig_title1" style="margin-left: 7px;" th:text="${session.userName}+' [ KFB: '+${session.userKfb} +' ]'">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="kf_fw_ig_title2" style="font-size:14px;"><a
+                                href="https://bbs.ikfol.com/kf_fw_ig_index.php" style="color:#ff0000;"
+                                th:href="@{/GamePage/gameMain.html}">争夺首页</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_mybp.php"
+                                th:href="@{/GamePage/gameItem.html}">我的物品</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_halo.php"
+                                th:href="@{/GamePage/gameBuff.html}">战力光环</a> | <a
+                                href="https://bbs.ikfol.com/kf_fw_ig_pklist.php"
+                                th:href="@{/GamePage/gameRanking.html}">争夺排行</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_shop.php"
+                                    th:href="@{/GamePage/gameShop.html}">物品商店</a>
+                            | <a
+                                    href="https://bbs.ikfol.com/kf_fw_ig_readme.php?safeid=025f86f"
+                                    th:href="@{/GamePage/gameHelp.html}">帮助说明</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="line"></div>
+            <script type="text/javascript">
+                function gmwp(wpid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "kf_fw_ig_shop.php",
+                        data: "buy=" + wpid + "&safeid=0e75a2a",
+                        success: function (msg) {
+                            var wptrid = "wp_" + wpid;
+                            $("#" + wptrid).html(msg);
+                        }
+                    });
+                }
+            </script>
+            <div style="width:860px;">
+                <div class="kf_fw_ig_title1">物品商店
+                    <span style="margin-left: 7px;">(当前持有 <b style="font-size: 14px;"th:text="${session.userKfb}">491,001</b> KFB )</span>
+                </div>
+                <div>
+                    <table cellpadding="0" cellspacing="0" width="860" align="center" class="kf_fw_ig1">
+                        <tbody>
+                        <tr>
+                            <td width="15%">名称</td>
+                            <td width="15%">价格</td>
+                            <td width="10%">购买</td>
+                            <td width="60%">说明</td>
+                        </tr>
+                        <tr>
+                            <td>等级经验药丸</td>
+                            <td>5000KFB</td>
+                            <td id="wp_101"><a href="javascript:;" onclick="gmwp(&#39;101&#39;)">购买</a></td>
+                            <td>+5500等级经验（神秘系数经验）<span class="pd_cfg_tips pd_highlight" title="特别提示：
+神秘系数非神秘等级，购买【等级经验药丸】可能导致神秘等级下降，请知悉！
+神秘等级公式：神秘系数*((神秘系数*0.5)+(贡献*5)+(KFB*0.001)+(发帖*0.01))">[?]</span></td>
+                        </tr>
+                        <tr>
+                            <td>等级经验药丸（蛋）</td>
+                            <td>10000KFB</td>
+                            <td id="wp_102"><a href="javascript:;" onclick="gmwp(&#39;102&#39;)">购买</a></td>
+                            <td>+11000等级经验（神秘系数经验）<span class="pd_cfg_tips pd_highlight" title="特别提示：
+神秘系数非神秘等级，购买【等级经验药丸（蛋）】可能导致神秘等级下降，请知悉！
+神秘等级公式：神秘系数*((神秘系数*0.5)+(贡献*5)+(KFB*0.001)+(发帖*0.01))">[?]</span></td>
+                        </tr>
+                        <tr>
+                            <td>修炼手册</td>
+                            <td>100个普通盒子</td>
+                            <td id="wp_103"><a href="javascript:;" onclick="gmwp(&#39;103&#39;)">购买</a></td>
+                            <td>+50武器经验+50护甲经验</td>
+                        </tr>
+                        <tr>
+                            <td>重生之药</td>
+                            <td>2点贡献</td>
+                            <td id="wp_901"><a href="javascript:;" onclick="gmwp(&#39;901&#39;)">购买</a></td>
+                            <td>从争夺1层复活，满血再来一次（请在当天打完）</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="line"></div>
+
+        </div>
+        <div class="c"></div>
+
+        <div class="line"></div>
+        </table>
+    </div>
+</div>
+
+<script language="JavaScript" src="./绯月ScarletMoon_files/global.js" th:src="@{/js/GamePageJs/global.js}"></script>
+<script language="JavaScript">
+    var openmenu = {'td_hack': 'menu_hack', 'td_skin': 'menu_skin'};
+    read.InitMenu();
+</script>
+
+</body>
+</html>
