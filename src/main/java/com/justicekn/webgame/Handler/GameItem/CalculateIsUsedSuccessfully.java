@@ -14,6 +14,7 @@ public class CalculateIsUsedSuccessfully
 
     public String calculateIsUsedSuccessfully(int propType, int id, int identifyId)
     {
+        //测试漏洞: 删除操作 即使道具不存在依旧不影响执行, 需要添加道具存在与否的判断逻辑修复
         readUseableItemInf.deleteItem(identifyId);
         switch (propType)
         {
