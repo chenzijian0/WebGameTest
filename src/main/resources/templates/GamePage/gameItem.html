@@ -340,25 +340,25 @@
             </div>
             <div class="line"></div>
             <script type="text/javascript">
-                function sywp(wpid) {
+                function sywp(wpid,propType) {
                     $.ajax({
                         type: "POST",
-                        url: "kf_fw_ig_mybpdt.php",
-                        data: "do=1&id=" + wpid + "&safeid=025f86f",
+                        url: "UseProps",
+                        data: "identifyId="+ wpid+"&propType="+propType,
                         success: function (msg) {
-                            var wptrid = "wp_" + wpid;
+                            var wptrid =  wpid;
                             $("#" + wptrid).html(msg);
                         }
                     });
                 }
 
-                function cswp(wpid) {
+                function cswp(wpid,propType) {
                     $.ajax({
                         type: "POST",
-                        url: "kf_fw_ig_mybpdt.php",
-                        data: "do=2&id=" + wpid + "&safeid=025f86f",
+                        url: "SellItem",
+                        data: "identifyId="+ wpid+"&propType="+propType,
                         success: function (msg) {
-                            var wptrid = "wp_" + wpid;
+                            var wptrid =  wpid;
                             $("#" + wptrid).html(msg);
                         }
                     });
@@ -570,8 +570,8 @@
                     </tr>
                     <tr id="wp_61523139" th:id="${ul.identifyId}" th:each="ul:${usableItems}"
                         th:if="${#lists.isEmpty(usableItems)==false}">
-                        <td><a href="javascript:;" onclick="sywp(&#39;61523139&#39;)">使用</a></td>
-                        <td><a href="javascript:;" onclick="cswp(&#39;61523139&#39;)">出售</a></td>
+                        <td><a href="javascript:;" th:onclick="sywp([[${ul.identifyId}]],[[${ul.itemType}]])" onclick="sywp(&#39;61523139&#39;)">使用</a></td>
+                        <td><a href="javascript:;" th:onclick="cswp([[${ul.identifyId}]],[[${ul.itemType}]])" onclick="cswp(&#39;61523139&#39;)">出售</a></td>
                         <td th:text="${ul.itemName}">档案室钥匙</td>
                     </tr>
 

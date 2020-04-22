@@ -81,6 +81,6 @@ class WebgameApplicationTests
     @Test
     void sellItem()
     {
-        sellItemHandler.SellSuccess(3,2,37);
+        sellItemHandler.SellSuccess(1,1,37);
     }
 }

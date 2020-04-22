@@ -6,6 +6,17 @@ public class UsableItemList
     private int identifyId;
     private String itemClass;
     private String itemName;
+    private int itemType;
+
+    public int getItemType()
+    {
+        return itemType;
+    }
+
+    public void setItemType(int itemType)
+    {
+        this.itemType = itemType;
+    }
 
     public String getItemName()
     {
