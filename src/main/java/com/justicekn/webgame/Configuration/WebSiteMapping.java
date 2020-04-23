@@ -18,6 +18,7 @@ public class WebSiteMapping implements WebMvcConfigurer {
         registry.addViewController("/GamePage/gameItem.html").setViewName("/GamePage/gameItem");
         registry.addViewController("/GamePage/gameShop.html").setViewName("/GamePage/gameShop");
         registry.addViewController("/GamePage/gameBuff.html").setViewName("/GamePage/gameBuff");
+        registry.addViewController("/GamePage/FightInf/FightInf.html").setViewName("/GamePage/FightInf/FightInf");
 //        registry.addViewController("/GamePage/gameRanking.html").setViewName("/GamePage/gameRanking");
     }
 }

@@ -1,6 +1,7 @@
 package com.justicekn.webgame;
 
 import com.justicekn.webgame.Bean.GameItem.EquipmentEntity.ArmorAttributes;
+import com.justicekn.webgame.Bean.GameItem.UsableItemList;
 import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
 import com.justicekn.webgame.DAO.Interface.GameItem.ReadUseableItemInf;

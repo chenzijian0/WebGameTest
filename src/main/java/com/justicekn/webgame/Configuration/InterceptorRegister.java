@@ -17,6 +17,7 @@ public class InterceptorRegister implements WebMvcConfigurer {
                 ,"/Test"
                 ,"/register.html" ,"/register"
                 ,"/druid/**"
+                ,"/GamePage/FightInf/FightInf.html"
 //                ,"/forgot.html","forgot"
 //                ,"/GamePage/gameMain.html"
         );

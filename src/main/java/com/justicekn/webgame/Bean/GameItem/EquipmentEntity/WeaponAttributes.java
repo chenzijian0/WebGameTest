@@ -1,9 +1,7 @@
 package com.justicekn.webgame.Bean.GameItem.EquipmentEntity;
 
 import com.justicekn.webgame.Bean.GameMain.GamersEntity;
-import org.springframework.context.annotation.Bean;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
