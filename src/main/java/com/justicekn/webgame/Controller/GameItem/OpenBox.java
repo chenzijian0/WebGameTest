@@ -58,7 +58,7 @@ public class OpenBox
         }
         else
         {
-            response.sendRedirect("/error");
+            //response.sendRedirect("/error");
             return "No";
         }
     }

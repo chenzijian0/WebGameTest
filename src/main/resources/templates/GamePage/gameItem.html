@@ -340,62 +340,82 @@
             </div>
             <div class="line"></div>
             <script type="text/javascript">
-                function sywp(wpid,propType) {
+                function sywp(wpid, propType) {
                     $.ajax({
                         type: "POST",
                         url: "UseProps",
-                        data: "identifyId="+ wpid+"&propType="+propType,
+                        data: "identifyId=" + wpid + "&propType=" + propType,
                         success: function (msg) {
-                            var wptrid =  wpid;
+                            var wptrid = wpid;
                             $("#" + wptrid).html(msg);
                         }
                     });
                 }
 
-                function cswp(wpid,propType) {
+                function cswp(wpid, propType) {
                     $.ajax({
                         type: "POST",
                         url: "SellItem",
-                        data: "identifyId="+ wpid+"&propType="+propType,
+                        data: "identifyId=" + wpid + "&propType=" + propType,
                         success: function (msg) {
-                            var wptrid =  wpid;
+                            var wptrid = wpid;
                             $("#" + wptrid).html(msg);
                         }
                     });
                 }
-
+                var openBoxFlag;
                 function dkhz(hzlv) {
                     $.ajax({
                         type: "POST",
                         url: "OpenBox",
                         data: "boxId=" + hzlv,
                         success: function (msg) {
-                            $("#boxtext").append(msg);
-                            $("#boxtext").append("<br>");
-                            if (hzlv == 1) {
-                                $('.OrdinaryBox').text(parseInt($('.OrdinaryBox').text()) - 1);
-                            }
-                            if (hzlv == 2) {
-                                $('.LuckyBox').text(parseInt($('.LuckyBox').text()) - 1);
-                            }
-                            if (hzlv == 3) {
-                                $('.RareBox').text(parseInt($('.RareBox').text()) - 1);
-                            }
-                            if (hzlv == 4) {
-                                $('.LegendBox').text(parseInt($('.LegendBox').text()) - 1);
-                            }
-                            if (hzlv == 5) {
-                                $('.MysteryBox').text(parseInt($('.MysteryBox').text()) - 1);
+                            if (msg != "No") {
+                                openBoxFlag = true;
+                                $("#boxtext").append(msg);
+                                $("#boxtext").append("<br>");
+                                if (hzlv == 1) {
+                                    $('.OrdinaryBox').text(parseInt($('.OrdinaryBox').text()) - 1);
+                                }
+                                if (hzlv == 2) {
+                                    $('.LuckyBox').text(parseInt($('.LuckyBox').text()) - 1);
+                                }
+                                if (hzlv == 3) {
+                                    $('.RareBox').text(parseInt($('.RareBox').text()) - 1);
+                                }
+                                if (hzlv == 4) {
+                                    $('.LegendBox').text(parseInt($('.LegendBox').text()) - 1);
+                                }
+                                if (hzlv == 5) {
+                                    $('.MysteryBox').text(parseInt($('.MysteryBox').text()) - 1);
+                                }
+                            } else {
+                                alert("盒子数量不足");
+                                openBoxFlag = false;
                             }
                         }
                     });
+                    return openBoxFlag;
                 }
 
-                function cdzb(zbid , id) {
+                var IntervalId;
+
+                function dkqbhz(hzlv) {
+
+                    IntervalId = setInterval(function () {
+                        if (dkhz(hzlv) == false) {
+                            clearInterval(IntervalId);
+                        }
+
+                    }, 1000);
+                    console.log(IntervalId);
+                }
+
+                function cdzb(zbid, id) {
                     $.ajax({
                         type: "POST",
                         url: "EquipmentWeapons",
-                        data: "identifyId="+zbid,
+                        data: "identifyId=" + zbid,
                         success: function (msg) {
                             var wptrid = "wp_" + zbid;
                             $("#" + id).html(msg);
@@ -403,22 +423,23 @@
                     });
                 }
 
-                function cdwq(zbid , id) {
+                function cdwq(zbid, id) {
                     $.ajax({
                         type: "POST",
                         url: "EquipmentWeapons",
-                        data: "identifyId="+zbid,
+                        data: "identifyId=" + zbid,
                         success: function (msg) {
                             var wptrid = "wp_" + zbid;
                             $("#" + id).html(msg);
                         }
                     });
                 }
-                function cdfj(zbid , id) {
+
+                function cdfj(zbid, id) {
                     $.ajax({
                         type: "POST",
                         url: "EquipmentArm",
-                        data: "identifyId="+zbid,
+                        data: "identifyId=" + zbid,
                         success: function (msg) {
                             var wptrid = "wp_" + zbid;
                             $("#" + id).html(msg);
@@ -493,11 +514,11 @@
                         <td><a href="javascript:;" onclick="dkhz(5)">打开1个</a></td>
                     </tr>
                     <tr>
-                        <td><a href="javascript:;" onclick="dkhz(1)">打开全部</a></td>
-                        <td><a href="javascript:;" onclick="dkhz(2)">打开全部</a></td>
-                        <td><a href="javascript:;" onclick="dkhz(3)">打开全部</a></td>
-                        <td><a href="javascript:;" onclick="dkhz(4)">打开全部</a></td>
-                        <td><a href="javascript:;" onclick="dkhz(5)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkqbhz(1)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkqbhz(2)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkqbhz(3)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkqbhz(4)">打开全部</a></td>
+                        <td><a href="javascript:;" onclick="dkqbhz(5)">打开全部</a></td>
 
                     </tr>
                     <tr>
@@ -522,7 +543,8 @@
                     </tr>
                     <tr th:each="wl: ${weaponList}" th:if="${#lists.isEmpty(weaponList)==false}">
 
-                        <td id="wp_61523151" th:id="${wl.identifyId}"><a href="javascript:;" th:onclick="cdwq([[${wl.weaponId}]],[[${wl.identifyId}]])"
+                        <td id="wp_61523151" th:id="${wl.identifyId}"><a href="javascript:;"
+                                                                         th:onclick="cdwq([[${wl.weaponId}]],[[${wl.identifyId}]])"
                                                                          onclick="cdzb(&#39;61523151&#39;)">装备</a></td>
                         <td><a href="javascript:;" onclick="rlzb_qr(&#39;61523151&#39;)">熔炼</a></td>
                         <td style="text-align:left;padding-left:5px;"><span th:class="${wl.ra}"
@@ -537,7 +559,8 @@
                     </tr>
                     <tr th:each="al: ${armorList}" th:if="${#lists.isEmpty(armorList)==false}">
 
-                        <td id="wp_61523151" th:id="${al.identifyId}"><a href="javascript:;" th:onclick="cdfj([[${al.armorId}]],[[${al.identifyId}]])"
+                        <td id="wp_61523151" th:id="${al.identifyId}"><a href="javascript:;"
+                                                                         th:onclick="cdfj([[${al.armorId}]],[[${al.identifyId}]])"
                                                                          onclick="cdzb(&#39;61523151&#39;)">装备</a></td>
                         <td><a href="javascript:;" onclick="rlzb_qr(&#39;61523151&#39;)">熔炼</a></td>
                         <td style="text-align:left;padding-left:5px;"><span th:class="${al.ra}"
@@ -570,8 +593,10 @@
                     </tr>
                     <tr id="wp_61523139" th:id="${ul.identifyId}" th:each="ul:${usableItems}"
                         th:if="${#lists.isEmpty(usableItems)==false}">
-                        <td><a href="javascript:;" th:onclick="sywp([[${ul.identifyId}]],[[${ul.itemType}]])" onclick="sywp(&#39;61523139&#39;)">使用</a></td>
-                        <td><a href="javascript:;" th:onclick="cswp([[${ul.identifyId}]],[[${ul.itemType}]])" onclick="cswp(&#39;61523139&#39;)">出售</a></td>
+                        <td><a href="javascript:;" th:onclick="sywp([[${ul.identifyId}]],[[${ul.itemType}]])"
+                               onclick="sywp(&#39;61523139&#39;)">使用</a></td>
+                        <td><a href="javascript:;" th:onclick="cswp([[${ul.identifyId}]],[[${ul.itemType}]])"
+                               onclick="cswp(&#39;61523139&#39;)">出售</a></td>
                         <td th:text="${ul.itemName}">档案室钥匙</td>
                     </tr>
 
