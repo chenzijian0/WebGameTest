@@ -3,19 +3,17 @@ package com.justicekn.webgame.Controller.GameItem;
 import com.justicekn.webgame.DAO.Interface.GameItem.OpenBoxGetItem;
 import com.justicekn.webgame.Handler.GameItem.IsBoxEnough;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Random;
 
 /***
- *
+ * 这里巨大失误 ,  将 Controller层 和 Service层 内容写在了一起, 这本来是应该分开的.
+ * 将来有空的话 修复一下吧.......
  */
 @RestController
 public class OpenBox
@@ -165,12 +163,12 @@ public class OpenBox
         }
         if (weaOrArm == 0)
         {
-            openBoxGetItem.openBoxToGetWeapon(id, itemId.toString());
+            openBoxGetItem.openBoxToGetWeapon(id, itemId.toString(),rarity);
             return "获得了一件武器";
         }
         else
         {
-            openBoxGetItem.openBoxToGetArmor(id, itemId.toString());
+            openBoxGetItem.openBoxToGetArmor(id, itemId.toString(),rarity);
             return "获得了一件防具";
         }
     }

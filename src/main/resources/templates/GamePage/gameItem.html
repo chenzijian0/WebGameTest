@@ -450,17 +450,41 @@
                 function rlzb(zbid) {
                     $.ajax({
                         type: "POST",
-                        url: "kf_fw_ig_mybpdt.php",
-                        data: "do=5&id=" + zbid + "&safeid=025f86f",
+                        url: "/GamePage/DisassembleTheEquipment",
+                        data: "identifyId=" + zbid,
                         success: function (msg) {
-                            var wptrid = "wp_" + zbid;
+                            var wptrid = zbid+'sec';
+                            $("#" + wptrid).html(msg);
+                        }
+                    });
+                }
+
+                function rlwq(zbid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/GamePage/DisassembleTheWeapons",
+                        data: "identifyId=" + zbid,
+                        success: function (msg) {
+                            var wptrid = zbid+'sec';
+                            $("#" + wptrid).html(msg);
+                        }
+                    });
+                }
+
+                function rlhj(zbid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/GamePage/DisassembleTheArm",
+                        data: "identifyId=" + zbid,
+                        success: function (msg) {
+                            var wptrid = zbid+'sec';
                             $("#" + wptrid).html(msg);
                         }
                     });
                 }
 
                 function rlzb_qr(zbid) {
-                    if (confirm("熔炼后增加装备经验值，但该[传奇]装备会消失，确定要熔炼吗？")) {
+                    if (confirm("熔炼后增加装备经验值，但该[传奇]装备会消失，确定要熔炼吗？")){
                         $.ajax({
                             type: "POST",
                             url: "kf_fw_ig_mybpdt.php",
@@ -546,7 +570,7 @@
                         <td id="wp_61523151" th:id="${wl.identifyId}"><a href="javascript:;"
                                                                          th:onclick="cdwq([[${wl.weaponId}]],[[${wl.identifyId}]])"
                                                                          onclick="cdzb(&#39;61523151&#39;)">装备</a></td>
-                        <td><a href="javascript:;" onclick="rlzb_qr(&#39;61523151&#39;)">熔炼</a></td>
+                        <td th:id="${wl.identifyId}+'sec'"><a href="javascript:;" th:onclick="rlwq([[${wl.identifyId}]])"onclick="rlzb(&#39;61523151&#39;)">熔炼</a></td>
                         <td style="text-align:left;padding-left:5px;"><span th:class="${wl.ra}"
                                                                             th:text="${wl.weaponClassName}">传奇的铠甲</span>
                             <span
@@ -562,7 +586,7 @@
                         <td id="wp_61523151" th:id="${al.identifyId}"><a href="javascript:;"
                                                                          th:onclick="cdfj([[${al.armorId}]],[[${al.identifyId}]])"
                                                                          onclick="cdzb(&#39;61523151&#39;)">装备</a></td>
-                        <td><a href="javascript:;" onclick="rlzb_qr(&#39;61523151&#39;)">熔炼</a></td>
+                        <td th:id="${al.identifyId}+'sec'"><a href="javascript:;" th:onclick="rlhj([[${al.identifyId}]])"onclick="rlzb(&#39;61523151&#39;)">熔炼</a></td>
                         <td style="text-align:left;padding-left:5px;"><span th:class="${al.ra}"
                                                                             th:text="${al.armorClassName}">传奇的铠甲</span>
                             <span

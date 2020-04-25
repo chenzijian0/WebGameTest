@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Mapper
 public interface OpenBoxGetItem
 {
-    @Insert("insert into userEquipmentItem(id,weaponId) values (#{id} , #{itemId})")
-    public int openBoxToGetWeapon(int id, String itemId);
+    @Insert("insert into userEquipmentItem(id,weaponId,equipmentType) values (#{id} , #{itemId} , #{equipmentType})")
+    public int openBoxToGetWeapon(int id, String itemId ,int equipmentType);
 
-    @Insert("insert into userEquipmentItem(id,armId) values (#{id} , #{itemId})")
-    public int openBoxToGetArmor(int id, String itemId);
+    @Insert("insert into userEquipmentItem(id,armId,equipmentType) values (#{id} , #{itemId} , #{equipmentType})")
+    public int openBoxToGetArmor(int id, String itemId,int equipmentType);
 
     @Insert("insert into userUsableItem(id,itemClass) values(#{id},#{itemClass})")
     public int addUsableItem(int id, String itemClass);
