@@ -153,12 +153,12 @@ public class BattleSimulation
             {
                 attack = monsterEntity.getAttack();
                 // 虽然是使用的玩家的武器进行是否暴击和技能的判断 ,但是并不影响结果
-                if (userWeapon.useSkill((double) userEntity.getWis() / (userEntity.getWis() + 90)))
+                if (userWeapon.useSkill((double) monsterEntity.getWis() / (monsterEntity.getWis() + 90)))
                 {
                     battleInf.setUseSkill(true);
                     attack += attack * 0.5;
                 }
-                if (userWeapon.Crit((double) userEntity.getDex() / (userEntity.getDex() + 100)))
+                if (userWeapon.Crit((double) monsterEntity.getDex() / (monsterEntity.getDex() + 100)))
                 {
                     battleInf.setCriticalHit(true);
                     attack += attack;
