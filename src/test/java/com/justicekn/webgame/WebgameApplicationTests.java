@@ -80,8 +80,35 @@ class WebgameApplicationTests
     @Autowired
     SellItemHandler sellItemHandler;
     @Test
+    /***
+     * 测试道具的出售
+     */
     void sellItem()
     {
         sellItemHandler.SellSuccess(1,1,37);
+    }
+
+    /***
+     * 测试生成怪物
+     */
+    @Autowired
+    UserGameAttributes userGameAttributes;
+    @Test
+    void monster()
+    {
+        for (int i = 1; i < 11 ; i++)
+        {
+            UserGameAttributes temp =  userGameAttributes;
+            temp.setSnh(i*5);
+            temp.setAgi(i*2);
+            temp.setPhy(i*5);
+            temp.setDex(i*2);
+            temp.setWis(i*2);
+            temp.setMnd(i*2);
+            GamersEntity gamersEntity = new GamersEntity(userGameAttributes, 0);
+            System.out.println(gamersEntity);
+        }
+
+
     }
 }

@@ -378,27 +378,27 @@ public class ArmorAttributes {
         String secondTag = armorId.substring(stringIndex + 1, stringIndex + 2);
         switch (secondTag) {
             case "1"://被攻击恢复生命
-                restoreLife += entity.getWea_level() * 5 + 100;
+                restoreLife += entity.getArm_level() * 5 + 100;
                 mainAttributes.add("被攻击恢复生命 100+(等级X5)");
                 break;
             case "2"://护盾
-                shield += entity.getWea_level() * 20 + 500;
+                shield += entity.getArm_level() * 20 + 500;
                 mainAttributes.add("护盾 500+(等级X20)");
                 break;
             case "3"://减血加防
-                increaseDefense += entity.getWea_level();
+                increaseDefense += entity.getArm_level();
                 mainAttributes.add("每减少5%生命值获得额外意志(等级X1)");
                 break;
             case "4"://反弹对方实际伤害
-                antiInjury += (double) (entity.getWea_level() / 10);
+                antiInjury += (double) (entity.getArm_level() / 10);
                 mainAttributes.add("反弹对方实际伤害15%+(等级X0.1%)");
                 break;
             case "5"://减少物理暴击伤害
-                reduceCriticalDamage += entity.getWea_level() * 10;
+                reduceCriticalDamage += entity.getArm_level() * 10;
                 mainAttributes.add("减少物理暴击伤害10%+(等级x10无护甲减伤)");
                 break;
             case "6"://减少技能暴击伤害
-                reduceSkillDamage += entity.getWea_level() * 10;
+                reduceSkillDamage += entity.getArm_level() * 10;
                 mainAttributes.add("减少技能暴击伤害10%+(等级x10无护甲减伤)");
                 break;
         }

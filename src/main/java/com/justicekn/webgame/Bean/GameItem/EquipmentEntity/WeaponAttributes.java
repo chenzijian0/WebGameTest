@@ -4,13 +4,15 @@ import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 /***
- * WeaponId 包含3个部分
+ * WeaponId 包含4个部分
  * 第一部分(表示装备稀有度) 第一位 1-5    分别对应 ： 普通，幸运，稀有，传奇，神秘
- * 第二部分(表示装备主属性) 占第一部分数值 位   每位1个字段
+ * 第二部分(表示装备类型) 1,2,3 分别对应: 剑 , 弓, 法杖
+ * 第三部分(表示装备主属性) 占第一部分数值 位   每位1个字段
  *  ---第一字段 1-6 对应 攻击，速度，吸血，物穿，物理暴击伤害，技能暴击伤害
- * 第三部分(表示装备从属性) 占第一部分数值 * 3位 每位3个字段
+ * 第四部分(表示装备从属性) 占第一部分数值 * 3位 每位3个字段
  *  ---第一字段 1-6 对应 攻击，速度，吸血，物穿，物理暴击伤害，技能暴击伤害
  *  ---第二字段 对应加成    从属性，属性加成  1-7 对应 力量，敏捷，体质，灵活，智慧，意志,等级
  *  ---第三字段 2-8 对应加成 0.2 - 0.8 从属性加成
@@ -58,6 +60,36 @@ public class WeaponAttributes {
         this.weaponId = weaponId;
         weaponAttributeBonus(entity);
         attributeToString();
+    }
+
+    public ArrayList<String> getMainAttributes()
+    {
+        return mainAttributes;
+    }
+
+    public void setMainAttributes(ArrayList<String> mainAttributes)
+    {
+        this.mainAttributes = mainAttributes;
+    }
+
+    public ArrayList<String> getSecondaryAttributes()
+    {
+        return secondaryAttributes;
+    }
+
+    public void setSecondaryAttributes(ArrayList<String> secondaryAttributes)
+    {
+        this.secondaryAttributes = secondaryAttributes;
+    }
+
+    public ArrayList<String> getSecondaryAttributesBonus()
+    {
+        return secondaryAttributesBonus;
+    }
+
+    public void setSecondaryAttributesBonus(ArrayList<String> secondaryAttributesBonus)
+    {
+        this.secondaryAttributesBonus = secondaryAttributesBonus;
     }
 
     public String getWeaponPrimaryAttributes() {
@@ -379,6 +411,32 @@ public class WeaponAttributes {
         }
     }
 
+    public boolean useSkill(double rage)
+    {
+        Random random = new Random();
+        double i = random.nextDouble();
+        if (i <= rage)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean Crit(double rage)
+    {
+        Random random = new Random();
+        double i = random.nextDouble();
+        if (i <= rage)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     @Override
     public String toString() {
         return "WeaponAttributes{" +

@@ -7,7 +7,9 @@ import com.justicekn.webgame.Bean.Login.UserGameAttributes;
  * 虽然 名为GamersEntity  但是 实际上不能作为战斗中传入的实体参数
  * 战斗时 使用的实体参数 另外创建
  */
-public class GamersEntity {
+public class GamersEntity
+{
+    private int health;
     private int level;
     private int level_exp;
     private int arm_level;
@@ -26,28 +28,13 @@ public class GamersEntity {
     private int attack;
 
     @Override
-    public String toString() {
-        return "GamersEntity{" +
-                "level=" + level +
-                ", level_exp=" + level_exp +
-                ", arm_level=" + arm_level +
-                ", wea_level=" + wea_level +
-                ", snh=" + snh +
-                ", agi=" + agi +
-                ", phy=" + phy +
-                ", dex=" + dex +
-                ", wis=" + wis +
-                ", mnd=" + mnd +
-                ", luk=" + luk +
-                ", end=" + end +
-                ", totalHeath=" + totalHeath +
-                ", speed=" + speed +
-                ", reduceDamage=" + reduceDamage +
-                ", attack=" + attack +
-                '}';
+    public String toString()
+    {
+        return "GamersEntity{" + "level=" + level + ", level_exp=" + level_exp + ", arm_level=" + arm_level + ", wea_level=" + wea_level + ", snh=" + snh + ", agi=" + agi + ", phy=" + phy + ", dex=" + dex + ", wis=" + wis + ", mnd=" + mnd + ", luk=" + luk + ", end=" + end + ", totalHeath=" + totalHeath + ", speed=" + speed + ", reduceDamage=" + reduceDamage + ", attack=" + attack + '}';
     }
 
-    public GamersEntity(UserGameAttributes attributes, double buffValue) {
+    public GamersEntity(UserGameAttributes attributes, double buffValue)
+    {
         snh = (int) Math.round(attributes.getSnh() + attributes.getSnh() * buffValue / 100 + attributes.getCartoon1() + attributes.getMed() * 5);
         agi = (int) Math.round(attributes.getAgi() + attributes.getAgi() * buffValue / 100 + attributes.getCartoon2() + attributes.getMed() * 5);
         phy = (int) Math.round(attributes.getPhy() + attributes.getPhy() * buffValue / 100 + attributes.getCartoon1() + attributes.getMed() * 5);
@@ -62,136 +49,178 @@ public class GamersEntity {
         arm_level = attributes.getArm_level();
         totalHeath = phy * 20;
         speed = agi * 2;
-        reduceDamage = (double) Math.round((double) mnd / (mnd + 150) * 10000) /100 ;
-
+        reduceDamage = (double) Math.round((double) mnd / (mnd + 150) * 10000) / 100;
+        health = totalHeath;
         attack = snh * 5;
     }
 
-    public int getLevel_exp() {
+    public int getHealth()
+    {
+        return health;
+    }
+
+    public void setHealth(int health)
+    {
+        this.health = health;
+    }
+
+    public int getLevel_exp()
+    {
         return level_exp;
     }
 
-    public void setLevel_exp(int level_exp) {
+    public void setLevel_exp(int level_exp)
+    {
         this.level_exp = level_exp;
     }
 
-    public int getArm_level() {
+    public int getArm_level()
+    {
         return arm_level;
     }
 
-    public void setArm_level(int arm_level) {
+    public void setArm_level(int arm_level)
+    {
         this.arm_level = arm_level;
     }
 
-    public int getWea_level() {
+    public int getWea_level()
+    {
         return wea_level;
     }
 
-    public void setWea_level(int wea_level) {
+    public void setWea_level(int wea_level)
+    {
         this.wea_level = wea_level;
     }
 
-    public int getSnh() {
+    public int getSnh()
+    {
         return snh;
     }
 
-    public void setSnh(int snh) {
+    public void setSnh(int snh)
+    {
         this.snh = snh;
     }
 
-    public int getAgi() {
+    public int getAgi()
+    {
         return agi;
     }
 
-    public void setAgi(int agi) {
+    public void setAgi(int agi)
+    {
         this.agi = agi;
     }
 
-    public int getPhy() {
+    public int getPhy()
+    {
         return phy;
     }
 
-    public void setPhy(int phy) {
+    public void setPhy(int phy)
+    {
         this.phy = phy;
     }
 
-    public int getDex() {
+    public int getDex()
+    {
         return dex;
     }
 
-    public void setDex(int dex) {
+    public void setDex(int dex)
+    {
         this.dex = dex;
     }
 
-    public int getWis() {
+    public int getWis()
+    {
         return wis;
     }
 
-    public void setWis(int wis) {
+    public void setWis(int wis)
+    {
         this.wis = wis;
     }
 
-    public int getMnd() {
+    public int getMnd()
+    {
         return mnd;
     }
 
-    public void setMnd(int mnd) {
+    public void setMnd(int mnd)
+    {
         this.mnd = mnd;
     }
 
-    public int getLuk() {
+    public int getLuk()
+    {
         return luk;
     }
 
-    public void setLuk(int luk) {
+    public void setLuk(int luk)
+    {
         this.luk = luk;
     }
 
-    public int getEnd() {
+    public int getEnd()
+    {
         return end;
     }
 
-    public void setEnd(int end) {
+    public void setEnd(int end)
+    {
         this.end = end;
     }
 
-    public int getTotalHeath() {
+    public int getTotalHeath()
+    {
         return totalHeath;
     }
 
-    public void setTotalHeath(int totalHeath) {
+    public void setTotalHeath(int totalHeath)
+    {
         this.totalHeath = totalHeath;
     }
 
-    public int getSpeed() {
+    public int getSpeed()
+    {
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(int speed)
+    {
         this.speed = speed;
     }
 
-    public double getReduceDamage() {
+    public double getReduceDamage()
+    {
         return reduceDamage;
     }
 
-    public void setReduceDamage(double reduceDamage) {
+    public void setReduceDamage(double reduceDamage)
+    {
         this.reduceDamage = reduceDamage;
     }
 
-    public int getAttack() {
+    public int getAttack()
+    {
         return attack;
     }
 
-    public void setAttack(int attack) {
+    public void setAttack(int attack)
+    {
         this.attack = attack;
     }
 
-    public int getLevel() {
+    public int getLevel()
+    {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(int level)
+    {
         this.level = level;
     }
 }

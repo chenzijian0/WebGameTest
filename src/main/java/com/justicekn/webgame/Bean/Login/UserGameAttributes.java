@@ -3,14 +3,14 @@ package com.justicekn.webgame.Bean.Login;
 public class UserGameAttributes {
     private int level;
     private int level_exp;
-    private int snh;
-    private int agi;
-    private int phy;
-    private int dex;
-    private int wis;
-    private int mnd;
-    private int luk;
-    private int end;
+    private int snh;//力量
+    private int agi;//敏捷
+    private int phy;//体质
+    private int dex;//灵巧
+    private int wis;//智力
+    private int mnd;//意志
+    private int luk;//幸运
+    private int end;//耐力
     private String arm;
     private String wea;
     private double buff;
@@ -28,6 +28,41 @@ public class UserGameAttributes {
     private int id;
     private int assignable;
     private String name;
+
+    public UserGameAttributes()
+    {
+    }
+
+    public UserGameAttributes(int level, int level_exp, int snh, int agi, int phy, int dex, int wis, int mnd, int luk, int end, String arm, String wea, double buff, int floor, int cartoon1, int cartoon2, int room_key, int cd, int med, int coupon, int arm_level, int wea_level, int arm_exp, int wea_exp, int id, int assignable, String name)
+    {
+        this.level = level;
+        this.level_exp = level_exp;
+        this.snh = snh;
+        this.agi = agi;
+        this.phy = phy;
+        this.dex = dex;
+        this.wis = wis;
+        this.mnd = mnd;
+        this.luk = luk;
+        this.end = end;
+        this.arm = arm;
+        this.wea = wea;
+        this.buff = buff;
+        this.floor = floor;
+        this.cartoon1 = cartoon1;
+        this.cartoon2 = cartoon2;
+        this.room_key = room_key;
+        this.cd = cd;
+        this.med = med;
+        this.coupon = coupon;
+        this.arm_level = arm_level;
+        this.wea_level = wea_level;
+        this.arm_exp = arm_exp;
+        this.wea_exp = wea_exp;
+        this.id = id;
+        this.assignable = assignable;
+        this.name = name;
+    }
 
     @Override
     public String toString() {
