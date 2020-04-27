@@ -41,7 +41,8 @@ public class Battle
         request.setAttribute("offsetDex", battleSimulation.offsetDex);
         request.setAttribute("offsetWis", battleSimulation.offsetWis);
         request.setAttribute("offsetHeath", battleSimulation.offsetHeath);
-
+        request.setAttribute("userWin", battleSimulation.userWin);
+        request.setAttribute("monsterWin", battleSimulation.monsterWin);
 //        Iterator<BattleInf> iterator = infs.iterator();
 //        while (iterator.hasNext())
 //        {

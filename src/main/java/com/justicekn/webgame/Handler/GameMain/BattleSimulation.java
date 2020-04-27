@@ -37,6 +37,8 @@ public class BattleSimulation
     public ArmorAttributes userArm;
     public int weaponType;
     public int challengeFloor;
+    public boolean userWin = false;
+    public boolean monsterWin = false;
 
     public GamersEntity generateMonster(int id)
     {
@@ -73,6 +75,22 @@ public class BattleSimulation
         monsterEntity.setDex(monsterEntity.getDex() - offsetDex);
         userEntity.setWis(userEntity.getWis() - offsetWis);
         monsterEntity.setWis(monsterEntity.getWis() - offsetWis);
+        if(userEntity.getDex() - offsetDex < 0)
+        {
+            userEntity.setDex(0);
+        }
+        if(monsterEntity.getDex() - offsetDex < 0)
+        {
+            monsterEntity.setDex(0);
+        }
+        if(userEntity.getWis() - offsetWis < 0)
+        {
+            userEntity.setWis(0);
+        }
+        if(monsterEntity.getWis() - offsetWis < 0)
+        {
+            monsterEntity.setDex(0);
+        }
 
 
         //这里进行武器对玩家属性的修正操作
@@ -105,6 +123,8 @@ public class BattleSimulation
         int userSpeed = 0, monsterSpeed = 0;
         userSpeed += userEntity.getSpeed();
         monsterSpeed += monsterEntity.getSpeed();
+        userWin = false;
+        monsterWin = false;
         while (userEntity.getHealth() > 0 && monsterEntity.getHealth() > 0)
         {
             battleInf.setUserSide(false);
@@ -164,8 +184,8 @@ public class BattleSimulation
                     attack += attack;
                 }
                 //好吧不会回血了
-                double time = (1 - ((double)userEntity.getHealth() / userEntity.getTotalHeath())) / 0.05;
-                attack = attack - (int) (attack * userArm.getIncreaseDefense()*time/(userArm.getIncreaseDefense()*time+150));
+                double time = (1 - ((double) userEntity.getHealth() / userEntity.getTotalHeath())) / 0.05;
+                attack = attack - (int) (attack * userArm.getIncreaseDefense() * time / (userArm.getIncreaseDefense() * time + 150));
                 attack = attack - (int) (attack * userEntity.getReduceDamage() / 100);
                 userEntity.setHealth(userEntity.getHealth() - attack);
                 battleInf.setBattleInf("你受到" + String.valueOf(-attack) + "伤害");
@@ -176,6 +196,19 @@ public class BattleSimulation
                 userSpeed += userEntity.getSpeed();
             }
         }
+        if (userEntity.getHealth() <= 0)
+        {
+            battleInf.setBattleInf("你倒下了");
+            monsterWin = true;
+        }
+        if (monsterEntity.getHealth() <= 0)
+        {
+            battleInf.setBattleInf("你胜利了");
+            queryFloor.ChallengeSuccess(id);
+            userWin = true;
+        }
+
+
         return infs;
 
     }

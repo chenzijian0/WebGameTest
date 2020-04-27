@@ -11,15 +11,17 @@
 </li >
 <div th:each="b:${battleInfs}" >
     <li class="pk_log_u" th:if="${b.monsterSide} == true" >被攻击：<span style="color:#ff0000;"
-                                                                     th:if="${b.criticalHit}==true" >暴击！</span ><span
+                                                                     th:if="${b.criticalHit}==true" >暴击! </span ><span
             style="color:#0831d7;"
-            th:if="${b.useSkill}==true" >使用技能</span ><span th:text="${b.battleInf}" ></span ></li >
+            th:if="${b.useSkill}==true" >使用技能! </span ><span th:text="${b.battleInf}" ></span ></li >
     <li class="pk_log_i" th:if="${b.userSide} == true" >你发起了进攻：<span style="color:#ff0000;"
-                                                                     th:if="${b.criticalHit}==true" >暴击！</span ><span
+                                                                     th:if="${b.criticalHit}==true" >暴击! </span ><span
             style="color:#0831d7;"
-            th:if="${b.useSkill}==true" >使用技能</span ><span
+            th:if="${b.useSkill}==true" >使用技能! </span ><span
             th:text="${b.battleInf}" ></span ></li >
+
 </div >
-<li class="pk_log_f" >你被击败了</li >
+<li class="pk_log_v" th:if="${userWin} == true" th:text="你胜利了">你被击败了</li >
+<li class="pk_log_f" th:if="${monsterWin} == true" th:text="你被击败了">你被击败了</li >
 <li class="pk_log_v" >敌人掉落了[ 26 个 传奇盒子 ]</li >
 </html >
