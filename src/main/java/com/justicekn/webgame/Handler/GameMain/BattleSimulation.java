@@ -39,17 +39,60 @@ public class BattleSimulation
     public int challengeFloor;
     public boolean userWin = false;
     public boolean monsterWin = false;
+    public int heathPercentage;
+    public int remainingHp;
+    public int totalHp;
 
     public GamersEntity generateMonster(int id)
     {
         challengeFloor = queryFloor.queryChallengeFloor(id);
         UserGameAttributes temp = userGameAttributes;
-        temp.setSnh(challengeFloor * 5);
-        temp.setPhy(challengeFloor * 5);
-        temp.setAgi(challengeFloor * 2);
-        temp.setDex(challengeFloor * 2);
-        temp.setWis(challengeFloor * 2);
-        temp.setMnd(challengeFloor);
+        if (challengeFloor <= 50)
+        {
+            temp.setSnh(challengeFloor * 5);
+            temp.setPhy(challengeFloor * 5);
+            temp.setAgi(challengeFloor * 2);
+            temp.setDex(challengeFloor * 2);
+            temp.setWis(challengeFloor * 2);
+            temp.setMnd(challengeFloor);
+        }
+        else if (challengeFloor <= 100)
+        {
+            temp.setSnh(challengeFloor * 10);
+            temp.setPhy(challengeFloor * 7);
+            temp.setAgi(challengeFloor * 3);
+            temp.setDex(challengeFloor * 3);
+            temp.setWis(challengeFloor * 3);
+            temp.setMnd(challengeFloor * 4);
+        }
+        else if (challengeFloor <= 150)
+        {
+            temp.setSnh(challengeFloor * 13);
+            temp.setPhy(challengeFloor * 10);
+            temp.setAgi(challengeFloor * 5);
+            temp.setDex(challengeFloor * 6);
+            temp.setWis(challengeFloor * 6);
+            temp.setMnd(challengeFloor * 8);
+        }
+        else if (challengeFloor <= 200)
+        {
+            temp.setSnh(challengeFloor * 20);
+            temp.setPhy(challengeFloor * 15);
+            temp.setAgi(challengeFloor * 10);
+            temp.setDex(challengeFloor * 10);
+            temp.setWis(challengeFloor * 10);
+            temp.setMnd(challengeFloor * 13);
+        }
+        else
+        {
+            temp.setSnh(challengeFloor * 20);
+            temp.setPhy(challengeFloor * 15);
+            temp.setAgi(challengeFloor * 10);
+            temp.setDex(challengeFloor * 10);
+            temp.setWis(challengeFloor * 10);
+            temp.setMnd(challengeFloor * 13);
+
+        }
         GamersEntity gamersEntity = new GamersEntity(userGameAttributes, 0);
         return gamersEntity;
     }
@@ -71,25 +114,37 @@ public class BattleSimulation
         offsetHeath = monsterEntity.getTotalHeath() - userGameAttributes.getCd() * monsterEntity.getTotalHeath() / 100;
 
         //属性抵消修正
-        userEntity.setDex(userEntity.getDex() - offsetDex);
-        monsterEntity.setDex(monsterEntity.getDex() - offsetDex);
-        userEntity.setWis(userEntity.getWis() - offsetWis);
-        monsterEntity.setWis(monsterEntity.getWis() - offsetWis);
-        if(userEntity.getDex() - offsetDex < 0)
+        if (userEntity.getDex() - offsetDex < 0)
         {
             userEntity.setDex(0);
         }
-        if(monsterEntity.getDex() - offsetDex < 0)
+        else
+        {
+            userEntity.setDex(userEntity.getDex() - offsetDex);
+        }
+        if (monsterEntity.getDex() - offsetDex < 0)
         {
             monsterEntity.setDex(0);
         }
-        if(userEntity.getWis() - offsetWis < 0)
+        else
+        {
+            monsterEntity.setDex(monsterEntity.getDex() - offsetDex);
+        }
+        if (userEntity.getWis() - offsetWis < 0)
         {
             userEntity.setWis(0);
         }
-        if(monsterEntity.getWis() - offsetWis < 0)
+        else
+        {
+            userEntity.setWis(userEntity.getWis() - offsetWis);
+        }
+        if (monsterEntity.getWis() - offsetWis < 0)
         {
             monsterEntity.setDex(0);
+        }
+        else
+        {
+            monsterEntity.setWis(monsterEntity.getWis() - offsetWis);
         }
 
 
@@ -156,7 +211,7 @@ public class BattleSimulation
                 if (userWeapon.Crit((double) userEntity.getDex() / (userEntity.getDex() + 100)))
                 {
                     battleInf.setCriticalHit(true);
-                    attack = (int) (attack * 2 * (userWeapon.getPhysicalCrit() + 1) / 100) + attack * 2;
+                    attack = (int) (attack * 2 * userWeapon.getPhysicalCrit() / 100) + attack * 2;
                 }
 
                 attack = attack - (int) (attack * monsterEntity.getReduceDamage() / 100);
@@ -203,6 +258,9 @@ public class BattleSimulation
         }
         if (monsterEntity.getHealth() <= 0)
         {
+            heathPercentage = 100 - (int) (userEntity.getHealth() / (double) userEntity.getTotalHeath() * 100);
+            remainingHp = userEntity.getHealth();
+            totalHp = userEntity.getTotalHeath();
             battleInf.setBattleInf("你胜利了");
             queryFloor.ChallengeSuccess(id);
             userWin = true;

@@ -43,6 +43,9 @@ public class Battle
         request.setAttribute("offsetHeath", battleSimulation.offsetHeath);
         request.setAttribute("userWin", battleSimulation.userWin);
         request.setAttribute("monsterWin", battleSimulation.monsterWin);
+        request.setAttribute("heathPercentage", battleSimulation.heathPercentage);
+        request.setAttribute("totalHp", battleSimulation.totalHp);
+        request.setAttribute("remainingHp", battleSimulation.remainingHp);
 //        Iterator<BattleInf> iterator = infs.iterator();
 //        while (iterator.hasNext())
 //        {

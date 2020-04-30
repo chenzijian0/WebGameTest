@@ -22,6 +22,7 @@
 
 </div >
 <li class="pk_log_v" th:if="${userWin} == true" th:text="你胜利了">你被击败了</li >
+<li class="pk_log_h" th:if="${userWin} == true" th:text="'生命值 '+ ${remainingHp}+'/'+${totalHp}" th:style="'margin-right:'+${heathPercentage}+'%;'">你被击败了</li >
 <li class="pk_log_f" th:if="${monsterWin} == true" th:text="你被击败了">你被击败了</li >
 <li class="pk_log_v" >敌人掉落了[ 26 个 传奇盒子 ]</li >
 </html >
