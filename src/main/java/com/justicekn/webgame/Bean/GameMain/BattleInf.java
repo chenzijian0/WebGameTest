@@ -10,8 +10,19 @@ public class BattleInf
     private boolean monsterSide = false;
     private boolean userSide = false;
     private String battleInf;
+    private String skillInf;
     private boolean useSkill = false;
     private boolean criticalHit = false;
+
+    public String getSkillInf()
+    {
+        return skillInf;
+    }
+
+    public void setSkillInf(String skillInf)
+    {
+        this.skillInf = skillInf;
+    }
 
     public boolean isUseSkill()
     {

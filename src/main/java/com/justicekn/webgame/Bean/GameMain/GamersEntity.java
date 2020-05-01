@@ -6,6 +6,8 @@ import com.justicekn.webgame.Bean.Login.UserGameAttributes;
  * 这是一个十分愚蠢的Class  为何我不继承 UserGameAttributes.java 呢?
  * 虽然 名为GamersEntity  但是 实际上不能作为战斗中传入的实体参数
  * 战斗时 使用的实体参数 另外创建
+ *
+ * 这里的 GamersEntity实例是由传入 UserGameAttributes 后生成的 , 但是其中的 health属性 却又是通过数据库读取得到的, 需要注意
  */
 public class GamersEntity
 {
@@ -50,7 +52,7 @@ public class GamersEntity
         totalHeath = phy * 20;
         speed = agi * 2;
         reduceDamage = (double) Math.round((double) mnd / (mnd + 150) * 10000) / 100;
-        health = totalHeath;
+        health = totalHeath;  //这是暂时的生成时的规定 仅为了测试使用 , 在实际情况下, health的值将会读取数据库后,调用setHealth()方法写入
         attack = snh * 5;
     }
 

@@ -46,6 +46,8 @@ public class Battle
         request.setAttribute("heathPercentage", battleSimulation.heathPercentage);
         request.setAttribute("totalHp", battleSimulation.totalHp);
         request.setAttribute("remainingHp", battleSimulation.remainingHp);
+        request.setAttribute("lootType", battleSimulation.lootType);
+
 //        Iterator<BattleInf> iterator = infs.iterator();
 //        while (iterator.hasNext())
 //        {

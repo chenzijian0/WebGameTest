@@ -5,6 +5,7 @@ import com.justicekn.webgame.Bean.GameItem.EquipmentEntity.WeaponAttributes;
 import com.justicekn.webgame.Bean.GameMain.BattleInf;
 import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
+import com.justicekn.webgame.DAO.Interface.GameMain.Loot;
 import com.justicekn.webgame.DAO.Interface.GameMain.QueryArmAndWeapon;
 import com.justicekn.webgame.DAO.Interface.GameMain.QueryFloor;
 import org.springframework.beans.BeanUtils;
@@ -13,10 +14,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+/***
+ * 这里的 GamersEntity实例是由传入 UserGameAttributes 后生成的 , 但是其中的 health属性 却又是通过数据库读取得到的, 需要注意
+ */
 @Service
 public class BattleSimulation
 {
+    @Autowired
+    Loot loot;
     @Autowired
     UserGameAttributes userGameAttributes;
     @Autowired
@@ -42,6 +49,7 @@ public class BattleSimulation
     public int heathPercentage;
     public int remainingHp;
     public int totalHp;
+    public String lootType;
 
     public GamersEntity generateMonster(int id)
     {
@@ -110,8 +118,9 @@ public class BattleSimulation
         userWeapon = new WeaponAttributes(0, WeaId, userEntity);
         userArm = new ArmorAttributes(0, ArmId, userEntity);
         userShield = userArm.getShield();
-        //战斗部分实际上并没有减血, 我们之后有时间再修复这个问题.
+        //战斗部分实际上并没有减血, 我们之后有时间再修复这个问题.(已修复)
         offsetHeath = monsterEntity.getTotalHeath() - userGameAttributes.getCd() * monsterEntity.getTotalHeath() / 100;
+        monsterEntity.setHealth(offsetHeath);
 
         //属性抵消修正
         if (userEntity.getDex() - offsetDex < 0)
@@ -198,12 +207,15 @@ public class BattleSimulation
                     {
                         case 1:
                             attack += ((userEntity.getAttack() + userEntity.getSnh() + userEntity.getWis() + userEntity.getDex() + userEntity.getAgi()) * 2) + ((userEntity.getAttack() + userEntity.getSnh() + userEntity.getWis() + userEntity.getDex() + userEntity.getAgi()) * 2) * (userWeapon.getSkillCrit() + 1) / 100;
+                            battleInf.setSkillInf("星爆气流斩");
                             break;
                         case 2:
                             attack += (userEntity.getAgi() * 3 + userEntity.getDex() * 7) + (userEntity.getAgi() * 3 + userEntity.getDex() * 7) * (userWeapon.getSkillCrit() + 1) / 100;
+                            battleInf.setSkillInf("流星箭");
                             break;
                         case 3:
                             attack += (userEntity.getWis() * 25 - userEntity.getPhy() * 30) + (userEntity.getWis() * 25 - userEntity.getPhy() * 30) * (userWeapon.getSkillCrit() + 1) / 100;
+                            battleInf.setSkillInf("元气弹");
                             break;
                     }
                 }
@@ -231,6 +243,7 @@ public class BattleSimulation
                 if (userWeapon.useSkill((double) monsterEntity.getWis() / (monsterEntity.getWis() + 90)))
                 {
                     battleInf.setUseSkill(true);
+                    battleInf.setSkillInf("狂暴怒吼");
                     attack += attack * 0.5;
                 }
                 if (userWeapon.Crit((double) monsterEntity.getDex() / (monsterEntity.getDex() + 100)))
@@ -264,10 +277,38 @@ public class BattleSimulation
             battleInf.setBattleInf("你胜利了");
             queryFloor.ChallengeSuccess(id);
             userWin = true;
+            lootType = earnLoot(id);
         }
 
 
         return infs;
 
+    }
+
+    public String earnLoot(int id)
+    {
+        Random random = new Random();
+        int i = random.nextInt(100);
+        if (i < 50)
+        {
+            loot.addOrdinaryBox(id);
+            return "普通盒子";
+        }
+        else if (i < 80)
+        {
+            loot.addLuckyBox(id);
+            return "幸运盒子";
+        }
+        else if (i < 95)
+        {
+            loot.addRareBox(id);
+            return "稀有盒子";
+        }
+        else if (i < 100)
+        {
+            loot.addLegendBox(id);
+            return "传奇盒子";
+        }
+        return " ";
     }
 }
