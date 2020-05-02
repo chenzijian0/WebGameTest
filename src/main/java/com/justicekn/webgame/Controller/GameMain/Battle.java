@@ -4,15 +4,14 @@ import com.justicekn.webgame.Bean.GameMain.BattleInf;
 import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
 import com.justicekn.webgame.Handler.GameMain.BattleSimulation;
+import com.justicekn.webgame.Handler.GameMain.CanChallenge;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -20,13 +19,24 @@ public class Battle
 {
     @Autowired
     BattleSimulation battleSimulation;
+    @Autowired
+    CanChallenge canChallenge;
+
     @RequestMapping("/GamePage/Battle")
-    public String battle(HttpServletRequest request)
+    public String battle(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
         double buffValue;
         int id ;
         UserGameAttributes userGameAttributes;
         id = (int)request.getSession().getAttribute("userId");
+        //判断是否可以进行挑战
+        if (canChallenge.canChallenge(id))
+        {
+            response.sendRedirect("/GamePage/CanNotChallenge");
+            return "/GamePage/FightInf/FightInf";
+        }
+
+
         userGameAttributes = (UserGameAttributes)request.getSession().getAttribute("userAttributesFromDataBase");
         buffValue = (double)request.getSession().getAttribute("buffValue");
 

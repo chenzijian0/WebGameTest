@@ -7,6 +7,7 @@ import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
 import com.justicekn.webgame.DAO.Interface.GameMain.Loot;
 import com.justicekn.webgame.DAO.Interface.GameMain.QueryArmAndWeapon;
+import com.justicekn.webgame.DAO.Interface.GameMain.QueryChallengeTime;
 import com.justicekn.webgame.DAO.Interface.GameMain.QueryFloor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class BattleSimulation
     BattleInf battleInf;
     @Autowired
     QueryArmAndWeapon queryArmAndWeapon;
+    @Autowired
+    QueryChallengeTime queryChallengeTime;
 
     public int monsterHeath;
     public int monsterSpeed;
@@ -264,11 +267,15 @@ public class BattleSimulation
                 userSpeed += userEntity.getSpeed();
             }
         }
+        //落败
         if (userEntity.getHealth() <= 0)
         {
+            queryChallengeTime.ifChallengeFail(id);
+            queryFloor.ChallengeFailed(id);
             battleInf.setBattleInf("你倒下了");
             monsterWin = true;
         }
+        //战胜
         if (monsterEntity.getHealth() <= 0)
         {
             heathPercentage = 100 - (int) (userEntity.getHealth() / (double) userEntity.getTotalHeath() * 100);

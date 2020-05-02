@@ -1,10 +1,10 @@
 package com.justicekn.webgame;
 
 import com.justicekn.webgame.Bean.GameItem.EquipmentEntity.ArmorAttributes;
-import com.justicekn.webgame.Bean.GameItem.UsableItemList;
 import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
 import com.justicekn.webgame.DAO.Interface.GameItem.ReadUseableItemInf;
+import com.justicekn.webgame.DAO.Interface.GameMain.QueryChallengeTime;
 import com.justicekn.webgame.Handler.GameBuff.GetBuffRankList;
 import com.justicekn.webgame.Handler.GameItem.CalculateIsUsedSuccessfully;
 import com.justicekn.webgame.Handler.GameItem.SellItemHandler;
@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
 import java.util.Random;
 
 @SpringBootTest
@@ -79,13 +80,14 @@ class WebgameApplicationTests
 
     @Autowired
     SellItemHandler sellItemHandler;
+
     @Test
     /***
      * 测试道具的出售
      */
     void sellItem()
     {
-        sellItemHandler.SellSuccess(1,1,37);
+        sellItemHandler.SellSuccess(1, 1, 37);
     }
 
     /***
@@ -93,22 +95,39 @@ class WebgameApplicationTests
      */
     @Autowired
     UserGameAttributes userGameAttributes;
+
     @Test
     void monster()
     {
-        for (int i = 1; i < 11 ; i++)
+        for (int i = 1; i < 11; i++)
         {
-            UserGameAttributes temp =  userGameAttributes;
-            temp.setSnh(i*5);
-            temp.setAgi(i*2);
-            temp.setPhy(i*5);
-            temp.setDex(i*2);
-            temp.setWis(i*2);
-            temp.setMnd(i*2);
+            UserGameAttributes temp = userGameAttributes;
+            temp.setSnh(i * 5);
+            temp.setAgi(i * 2);
+            temp.setPhy(i * 5);
+            temp.setDex(i * 2);
+            temp.setWis(i * 2);
+            temp.setMnd(i * 2);
             GamersEntity gamersEntity = new GamersEntity(userGameAttributes, 0);
             System.out.println(gamersEntity);
         }
 
 
     }
+
+    @Autowired
+    QueryChallengeTime queryChallengeTime;
+
+    @Test
+    void queryTime()
+    {
+//        System.out.println(queryChallengeTiem.challengeTiem(37));
+        Date d1 = queryChallengeTime.challengeTiem(37);
+        Date d2 = queryChallengeTime.challengeTiem(45);
+        System.out.println(d1);
+        System.out.println(d1.before(new Date()));
+    }
+
+
+
 }
