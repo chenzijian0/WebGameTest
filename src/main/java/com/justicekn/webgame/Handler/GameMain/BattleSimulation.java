@@ -158,7 +158,8 @@ public class BattleSimulation
         {
             monsterEntity.setWis(monsterEntity.getWis() - offsetWis);
         }
-
+        int nowHealth = queryFloor.queryNowHealth(id);
+        userEntity.setHealth(nowHealth);
 
         //这里进行武器对玩家属性的修正操作
         String substring = WeaId.substring(1, 2);
@@ -254,7 +255,7 @@ public class BattleSimulation
                     battleInf.setCriticalHit(true);
                     attack += attack;
                 }
-                //好吧不会回血了
+                //计算减血所带来的护甲提升
                 double time = (1 - ((double) userEntity.getHealth() / userEntity.getTotalHeath())) / 0.05;
                 attack = attack - (int) (attack * userArm.getIncreaseDefense() * time / (userArm.getIncreaseDefense() * time + 150));
                 attack = attack - (int) (attack * userEntity.getReduceDamage() / 100);
@@ -272,8 +273,12 @@ public class BattleSimulation
         {
             queryChallengeTime.ifChallengeFail(id);
             queryFloor.ChallengeFailed(id);
+            queryFloor.updateHealth(userEntity.getTotalHeath(), id);
             battleInf.setBattleInf("你倒下了");
             monsterWin = true;
+            //是否更新最高挑战层数
+            int floor = queryFloor.queryFloor(id);
+            if (floor < challengeFloor) queryFloor.updateFloor(challengeFloor-1, id);
         }
         //战胜
         if (monsterEntity.getHealth() <= 0)
@@ -281,6 +286,15 @@ public class BattleSimulation
             heathPercentage = 100 - (int) (userEntity.getHealth() / (double) userEntity.getTotalHeath() * 100);
             remainingHp = userEntity.getHealth();
             totalHp = userEntity.getTotalHeath();
+            //挑战成功 恢复总血量的10%
+            if ((userEntity.getHealth() + userEntity.getTotalHeath() / 10) < userEntity.getTotalHeath())
+            {
+                queryFloor.updateHealth(userEntity.getHealth() + userEntity.getTotalHeath() / 5, id);
+            }
+            else
+            {
+                queryFloor.updateHealth(userEntity.getTotalHeath(), id);
+            }
             battleInf.setBattleInf("你胜利了");
             queryFloor.ChallengeSuccess(id);
             userWin = true;
