@@ -5,7 +5,7 @@
             th:text="${monsterSpeed}" ></span >速)
 </li >
 <li class="pk_log_g" >傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(<span th:text="${offsetHeath}" ></span >)</li >
-<li class="pk_log_g" >你拥有一个魔法护盾(<span th:text="${userShield}" ></span >)，护盾本身不计算护甲，每次战斗自动补满。</li >
+<li class="pk_log_g" th:if="${userShield}!=0">你拥有一个魔法护盾(<span th:text="${userShield}" ></span >)，护盾本身不计算护甲，每次战斗自动补满。</li >
 <li class="pk_log_g" >[抵消效果]双方均（减少灵活之和 x 33% =<span th:text="${offsetDex}" ></span >）和（减少智力之和 x 33% =<span
         th:text="${offsetWis}" ></span >）
 </li >

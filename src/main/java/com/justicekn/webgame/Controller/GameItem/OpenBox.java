@@ -2,6 +2,7 @@ package com.justicekn.webgame.Controller.GameItem;
 
 import com.justicekn.webgame.DAO.Interface.GameItem.OpenBoxGetItem;
 import com.justicekn.webgame.Handler.GameItem.IsBoxEnough;
+import com.justicekn.webgame.Handler.Login.LoginHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,8 @@ import java.util.Random;
 @RestController
 public class OpenBox
 {
+    @Autowired
+    LoginHandler loginHandler;
     @Autowired
     OpenBoxGetItem openBoxGetItem;
     @Autowired
@@ -51,8 +54,8 @@ public class OpenBox
                     returnString = choseOne(id, itemClass, 17, 4);
                     break;
             }
-
-            return returnString;
+            int kfb = loginHandler.findKfbAtLogin(id);
+            httpSession.setAttribute("userKfb",kfb ); return returnString;
         }
         else
         {
@@ -97,12 +100,19 @@ public class OpenBox
     public String getKfb(int id, int magnification)
     {
         int nextInt = random.nextInt(100);
+        openBoxGetItem.openBoxToGetKfb(nextInt * magnification, id);
         return "获得了[" + nextInt * magnification + "]KFB";
     }
 
     public String getExp(int id, int magnification)
     {
         int nextInt = random.nextInt(100);
+        openBoxGetItem.openBoxToGetExp(nextInt * magnification, id);
+        if (openBoxGetItem.isUpgradeLevel(id) <= 0)
+        {
+            openBoxGetItem.upgradeLevel(id);
+            openBoxGetItem.upgradeLevelExp(id);
+        }
         return "获得了[" + nextInt * magnification + "]经验";
     }
 
@@ -163,12 +173,12 @@ public class OpenBox
         }
         if (weaOrArm == 0)
         {
-            openBoxGetItem.openBoxToGetWeapon(id, itemId.toString(),rarity);
+            openBoxGetItem.openBoxToGetWeapon(id, itemId.toString(), rarity);
             return "获得了一件武器";
         }
         else
         {
-            openBoxGetItem.openBoxToGetArmor(id, itemId.toString(),rarity);
+            openBoxGetItem.openBoxToGetArmor(id, itemId.toString(), rarity);
             return "获得了一件防具";
         }
     }

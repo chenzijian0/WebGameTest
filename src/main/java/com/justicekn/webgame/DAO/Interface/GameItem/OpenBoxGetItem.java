@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 public interface OpenBoxGetItem
 {
     @Insert("insert into userEquipmentItem(id,weaponId,equipmentType) values (#{id} , #{itemId} , #{equipmentType})")
-    public int openBoxToGetWeapon(int id, String itemId ,int equipmentType);
+    public int openBoxToGetWeapon(int id, String itemId, int equipmentType);
 
     @Insert("insert into userEquipmentItem(id,armId,equipmentType) values (#{id} , #{itemId} , #{equipmentType})")
-    public int openBoxToGetArmor(int id, String itemId,int equipmentType);
+    public int openBoxToGetArmor(int id, String itemId, int equipmentType);
 
     @Insert("insert into userUsableItem(id,itemClass) values(#{id},#{itemClass})")
     public int addUsableItem(int id, String itemClass);
@@ -47,6 +47,21 @@ public interface OpenBoxGetItem
 
     @Update("update userGameAttributes set MysteryBox = MysteryBox - 1 where id = #{id} limit 1")
     public int reduceMysteryBox(int id);
+
+    @Update("update usergameattributes set level_exp = level_exp - #{expCount} where id = #{id}")
+    public void openBoxToGetExp(int expCount, int id);
+
+    @Update("update usergameattributes set level = level + 1 where id = #{id}")
+    public void upgradeLevel(int id);
+
+    @Update("update usergameattributes set level_exp = level_exp + level * 1000 where id = #{id}")
+    public void upgradeLevelExp(int id);
+
+    @Update("update usergameattributes set KFB = KFB + #{KfbCount} where id = #{id}")
+    public void openBoxToGetKfb(int KfbCount , int id);
+
+    @Select("select level_exp from usergameattributes where id = #{id}")
+    public int isUpgradeLevel(int id);
 
 
 }
