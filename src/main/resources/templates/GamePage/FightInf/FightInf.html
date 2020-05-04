@@ -1,28 +1,35 @@
 <!DOCTYPE html >
-<html xmlns:th="https://www.thymeleaf.org/" >
-<li class="pk_log_j" >在[ <span style="font-size:24px;" th:text="${challengeFloor}" >131</span >
-    层]你遭遇了NPC(<span th:text="${monsterHeath}" ></span >血|<span th:text="${monsterAttack}" ></span >攻|<span
-            th:text="${monsterSpeed}" ></span >速)
-</li >
-<li class="pk_log_g" >傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(<span th:text="${offsetHeath}" ></span >)</li >
-<li class="pk_log_g" th:if="${userShield}!=0">你拥有一个魔法护盾(<span th:text="${userShield}" ></span >)，护盾本身不计算护甲，每次战斗自动补满。</li >
-<li class="pk_log_g" >[抵消效果]双方均（减少灵活之和 x 33% =<span th:text="${offsetDex}" ></span >）和（减少智力之和 x 33% =<span
-        th:text="${offsetWis}" ></span >）
-</li >
-<div th:each="b:${battleInfs}" >
-    <li class="pk_log_u" th:if="${b.monsterSide} == true" >被攻击：<span style="color:#ff0000;"
-                                                                     th:if="${b.criticalHit}==true" >暴击!  </span ><span
+<html xmlns:th="https://www.thymeleaf.org/">
+<li class="pk_log_j">在[ <span style="font-size:24px;" th:text="${challengeFloor}">131</span>
+    层]你遭遇了NPC(<span th:text="${monsterHeath}"></span>血|<span th:text="${monsterAttack}"></span>攻|<span
+            th:text="${monsterSpeed}"></span>速)
+</li>
+<li class="pk_log_g">傲娇LOLI娇蛮音CD发挥作用，强制百分比扣除对方生命值，对方当前生命值(<span th:text="${offsetHeath}"></span>)</li>
+<li class="pk_log_g" th:if="${userShield}!=0">你拥有一个魔法护盾(<span th:text="${userShield}"></span>)，护盾本身不计算护甲，每次战斗自动补满。</li>
+<li class="pk_log_g">[抵消效果]双方均（减少灵活之和 x 33% =<span th:text="${offsetDex}"></span>）和（减少智力之和 x 33% =<span
+        th:text="${offsetWis}"></span>）
+</li>
+<div th:each="b:${battleInfs}">
+    <li class="pk_log_u" th:if="${b.monsterSide} == true">被攻击：<span style="color:#ff0000;"
+                                                                    th:if="${b.criticalHit}==true">暴击!  </span><span
             style="color:#0831d7;"
-            th:if="${b.useSkill}==true" th:text="${b.skillInf}+'!  '" >使用技能! </span ><span th:text="${b.battleInf}" ></span ></li >
-    <li class="pk_log_i" th:if="${b.userSide} == true" >你发起了进攻：<span style="color:#ff0000;"
-                                                                     th:if="${b.criticalHit}==true" >暴击!  </span ><span
+            th:if="${b.useSkill}==true" th:text="${b.skillInf}+'!  '">使用技能! </span><span
+            th:text="${b.battleInf}"></span><span style="color:#FF0000"
+                                                  th:if="${b.antiInjury}== true"
+                                                  th:text="'+反弹伤害'+${antiInjury}+' '"></span></span>
+        <span style="color:#00974B"
+              th:if="${b.restoreLife}== true" th:text="'+生命恢复'+${restoreLife}+' '"></span></li>
+    <li class="pk_log_i" th:if="${b.userSide} == true">你发起了进攻：<span style="color:#ff0000;"
+                                                                    th:if="${b.criticalHit}==true">暴击!  </span><span
             style="color:#0831d7;"
-            th:if="${b.useSkill}==true" th:text="${b.skillInf}+'!  '" >使用技能! </span ><span
-            th:text="${b.battleInf}" ></span ></li >
+            th:if="${b.useSkill}==true" th:text="${b.skillInf}+'!  '">使用技能! </span><span
+            th:text="${b.battleInf}"></span></li>
 
-</div >
-<li class="pk_log_v" th:if="${userWin} == true" th:text="你胜利了">你被击败了</li >
-<li class="pk_log_h" th:if="${userWin} == true" th:text="'生命值 '+ ${remainingHp}+'/'+${totalHp}" th:style="'margin-right:'+${heathPercentage}+'%;'">你被击败了</li >
-<li class="pk_log_f" th:if="${monsterWin} == true" th:text="你被击败了">你被击败了</li >
-<li class="pk_log_v" th:if="${userWin} == true" th:text="'敌人掉落了['+${lootType}+']'">敌人掉落了[ 26 个 传奇盒子 ]</li >
-</html >
+</div>
+<li class="pk_log_v" th:if="${userWin} == true" th:text="你胜利了"></li>
+<li class="pk_log_h" th:if="${userWin} == true" th:text="'生命值 '+ ${remainingHp}+'/'+${totalHp}"
+    th:style="'margin-right:'+${heathPercentage}+'%;'">
+</li>
+<li class="pk_log_f" th:if="${monsterWin} == true" th:text="你被击败了">你被击败了</li>
+<li class="pk_log_v" th:if="${userWin} == true" th:text="'敌人掉落了['+${lootType}+']'">敌人掉落了[ 26 个 传奇盒子 ]</li>
+</html>

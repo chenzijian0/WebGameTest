@@ -57,6 +57,8 @@ public class Battle
         request.setAttribute("totalHp", battleSimulation.totalHp);
         request.setAttribute("remainingHp", battleSimulation.remainingHp);
         request.setAttribute("lootType", battleSimulation.lootType);
+        request.setAttribute("antiInjury", battleSimulation.antiInjury);
+        request.setAttribute("restoreLife", battleSimulation.restoreLife);
 
 //        Iterator<BattleInf> iterator = infs.iterator();
 //        while (iterator.hasNext())

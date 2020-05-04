@@ -53,6 +53,8 @@ public class BattleSimulation
     public int remainingHp;
     public int totalHp;
     public String lootType;
+    public int antiInjury;
+    public int restoreLife;
 
     public GamersEntity generateMonster(int id)
     {
@@ -239,7 +241,7 @@ public class BattleSimulation
                 infs.add(temp);
                 monsterSpeed += monsterEntity.getSpeed();
             }
-            //怪物攻击
+            //怪物攻击(未计算装备的减伤词条)
             else
             {
                 attack = monsterEntity.getAttack();
@@ -257,11 +259,31 @@ public class BattleSimulation
                 }
                 //计算减血所带来的护甲提升
                 double time = (1 - ((double) userEntity.getHealth() / userEntity.getTotalHeath())) / 0.05;
+                int totalAttack = attack;//记录怪物伤害(减免前)
                 attack = attack - (int) (attack * userArm.getIncreaseDefense() * time / (userArm.getIncreaseDefense() * time + 150));
                 attack = attack - (int) (attack * userEntity.getReduceDamage() / 100);
                 userEntity.setHealth(userEntity.getHealth() - attack);
                 battleInf.setBattleInf("你受到" + String.valueOf(-attack) + "伤害");
                 battleInf.setMonsterSide(true);
+
+                //计算对怪物反伤(取未减免的伤害值)
+                if (userArm.getAntiInjury() != 0)
+                {
+                    antiInjury = (int) (totalAttack * userArm.getAntiInjury());
+                    monsterEntity.setHealth(monsterEntity.getHealth() - antiInjury);
+                    battleInf.setAntiInjury(true);
+                }
+
+                //计算玩家的受伤回血词条加成
+                if (userArm.getRestoreLife() != 0)
+                {
+                    restoreLife = userArm.getRestoreLife();
+                    battleInf.setRestoreLife(true);
+                    if ((userEntity.getHealth() + remainingHp) < userEntity.getTotalHeath())
+                        userEntity.setHealth(userEntity.getHealth() + remainingHp);
+                    else userEntity.setHealth(userEntity.getTotalHeath());
+                }
+
                 BattleInf temp = new BattleInf();
                 BeanUtils.copyProperties(battleInf, temp);
                 infs.add(temp);
@@ -278,7 +300,9 @@ public class BattleSimulation
             monsterWin = true;
             //是否更新最高挑战层数
             int floor = queryFloor.queryFloor(id);
-            if (floor < challengeFloor) queryFloor.updateFloor(challengeFloor-1, id);
+            if (floor < challengeFloor) queryFloor.updateFloor(challengeFloor - 1, id);
+            //暂时还没有思考 双方同归于尽的处理, 暂时处理为玩家落败
+            return infs;
         }
         //战胜
         if (monsterEntity.getHealth() <= 0)
@@ -289,7 +313,7 @@ public class BattleSimulation
             //挑战成功 恢复总血量的10%
             if ((userEntity.getHealth() + userEntity.getTotalHeath() / 10) < userEntity.getTotalHeath())
             {
-                queryFloor.updateHealth(userEntity.getHealth() + userEntity.getTotalHeath() / 5, id);
+                queryFloor.updateHealth(userEntity.getHealth() + userEntity.getTotalHeath() / 10, id);
             }
             else
             {

@@ -332,7 +332,7 @@ public class ArmorAttributes {
                 secondaryAttributes.add("加防(");
                 break;
             case "4"://反伤
-                antiInjury = (int) (antiInjury * result);
+                antiInjury = (antiInjury * result);
                 secondaryAttributes.add("反伤(");
                 break;
             case "5"://减少物理暴击伤害
@@ -390,7 +390,7 @@ public class ArmorAttributes {
                 mainAttributes.add("每减少5%生命值获得额外意志(等级X1)");
                 break;
             case "4"://反弹对方实际伤害
-                antiInjury += (double) (entity.getArm_level() / 10);
+                antiInjury +=  ((double)entity.getArm_level()) / 1000 + 0.15;
                 mainAttributes.add("反弹对方实际伤害15%+(等级X0.1%)");
                 break;
             case "5"://减少物理暴击伤害

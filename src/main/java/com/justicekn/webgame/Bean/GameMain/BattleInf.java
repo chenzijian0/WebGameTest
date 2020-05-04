@@ -13,6 +13,28 @@ public class BattleInf
     private String skillInf;
     private boolean useSkill = false;
     private boolean criticalHit = false;
+    private boolean antiInjury = false;
+    private boolean restoreLife = false;
+
+    public boolean isAntiInjury()
+    {
+        return antiInjury;
+    }
+
+    public void setAntiInjury(boolean antiInjury)
+    {
+        this.antiInjury = antiInjury;
+    }
+
+    public boolean isRestoreLife()
+    {
+        return restoreLife;
+    }
+
+    public void setRestoreLife(boolean restoreLife)
+    {
+        this.restoreLife = restoreLife;
+    }
 
     public String getSkillInf()
     {

@@ -60,6 +60,34 @@ class WebgameApplicationTests
 
     }
 
+   @Test
+    void TestArm()
+    {
+        /***
+         * 手动生成一个装备, 并检查 是否合乎设计要求
+         * 检查完毕, 正常
+         */
+        int id = 37;
+        String account = "1";
+        //            获取用户游戏属性信息
+        UserGameAttributes userGameAttributes = loginHandler.GetUserGameAttributes(id);
+//获取Buff信息
+        double buffValue = getBuffRankList.getMyBuffValue(id);
+//计算属性
+        GamersEntity gamersEntity = new GamersEntity(userGameAttributes, buffValue);
+        System.out.println(gamersEntity);
+
+        //生成一个WeaponId
+        Random random = new Random();
+        String weaponId = "424344244535533225433426542412";
+        System.out.println(weaponId);
+        ArmorAttributes attributes = new ArmorAttributes(123, weaponId.toString(), gamersEntity);
+        System.out.println(attributes.toString());
+        System.out.println(attributes.getArmorClassName());
+        System.out.println(attributes.getArmorAttributes());
+
+    }
+
     @Autowired
     ReadUseableItemInf readUseableItemInf;
     @Autowired
