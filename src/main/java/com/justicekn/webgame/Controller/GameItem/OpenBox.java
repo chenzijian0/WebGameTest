@@ -110,6 +110,7 @@ public class OpenBox
         openBoxGetItem.openBoxToGetExp(nextInt * magnification, id);
         if (openBoxGetItem.isUpgradeLevel(id) <= 0)
         {
+            openBoxGetItem.addAttributePoints(id);
             openBoxGetItem.upgradeLevel(id);
             openBoxGetItem.upgradeLevelExp(id);
         }
@@ -181,5 +182,54 @@ public class OpenBox
             openBoxGetItem.openBoxToGetArmor(id, itemId.toString(), rarity);
             return "获得了一件防具";
         }
+    }
+
+
+
+    public String getWea(int id, int rarity)
+    {
+        int mainAttribute, SencondlyAttribute;
+        StringBuilder itemId = new StringBuilder();
+        itemId.append(rarity);
+        int type = random.nextInt(3) + 1;
+        itemId.append(type);
+        for (int temp = rarity; temp > 0; temp--)
+        {
+            mainAttribute = random.nextInt(6) + 1;
+            itemId.append(mainAttribute);
+        }
+
+        for (int temp = rarity * 3 * 2; temp > 0; temp--)
+        {
+            SencondlyAttribute = random.nextInt(6) + 1;
+            itemId.append(SencondlyAttribute);
+        }
+            openBoxGetItem.giveWea(itemId.toString(),id);
+            return "获得了一件武器";
+
+    }
+
+
+    public String getArm(int id, int rarity)
+    {
+        int mainAttribute, SencondlyAttribute;
+        StringBuilder itemId = new StringBuilder();
+        itemId.append(rarity);
+        int type = random.nextInt(3) + 1;
+        itemId.append(type);
+        for (int temp = rarity; temp > 0; temp--)
+        {
+            mainAttribute = random.nextInt(6) + 1;
+            itemId.append(mainAttribute);
+        }
+
+        for (int temp = rarity * 3 * 2; temp > 0; temp--)
+        {
+            SencondlyAttribute = random.nextInt(6) + 1;
+            itemId.append(SencondlyAttribute);
+        }
+        openBoxGetItem.giveArm(itemId.toString(),id);
+        return "获得了一件防具";
+
     }
 }

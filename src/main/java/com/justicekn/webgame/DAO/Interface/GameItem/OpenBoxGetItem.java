@@ -63,5 +63,13 @@ public interface OpenBoxGetItem
     @Select("select level_exp from usergameattributes where id = #{id}")
     public int isUpgradeLevel(int id);
 
+    @Update("update usergameattributes set ASSIGNABLE = ASSIGNABLE + 5 where  id = #{id} limit 1")
+    void addAttributePoints(int id);
+
+    @Update("update usergameattributes set WEA = #{WEA} where  id = #{id} limit 1")
+    void giveWea(String WEA ,int id);
+
+    @Update("update usergameattributes set ARM = #{ARM} where  id = #{id} limit 1")
+    void giveArm(String ARM ,int id);
 
 }

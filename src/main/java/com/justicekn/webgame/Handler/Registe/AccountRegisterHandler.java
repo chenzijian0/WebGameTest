@@ -1,6 +1,7 @@
 package com.justicekn.webgame.Handler.Registe;
 
 import com.justicekn.webgame.Bean.Registe.AccountRegisterBean;
+import com.justicekn.webgame.Controller.GameItem.OpenBox;
 import com.justicekn.webgame.DAO.Interface.Registe.CheckAtRegistration;
 import com.justicekn.webgame.DAO.Interface.Registe.RegisterAccount;
 import org.slf4j.Logger;
@@ -17,6 +18,8 @@ public class AccountRegisterHandler
     @Autowired
 //            查询账号是否重复使用的接口
             CheckAtRegistration checkAtRegistration;
+    @Autowired
+    OpenBox openBox;
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -31,6 +34,10 @@ public class AccountRegisterHandler
             registerAccount.reg(bean.getName(), bean.getAccount(), bean.getPwd());
             int userId = registerAccount.findAccountAtDataBase(bean.getAccount());
             registerAccount.userGameAttributesRegiste(userId, bean.getName());
+            //给予 新号一件武器和防具
+            openBox.getArm(userId,1);
+            openBox.getWea(userId,1);
+
             return "OK";
         }
         else
