@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserGameAttributesGet {
-    @Select("select * from userGameAttributes where  id = #{id} limit 1")
+    @Select("select * from usergameattributes where  id = #{id} limit 1")
     public UserGameAttributes getUserGameAttributes(int id);
 }

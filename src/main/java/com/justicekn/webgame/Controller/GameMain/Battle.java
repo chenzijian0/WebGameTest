@@ -66,6 +66,6 @@ public class Battle
 //            System.out.println(iterator.next().getBattleInf());
 //        }
 
-        return "/GamePage/FightInf/FightInf";
+        return "GamePage/FightInf/FightInf";
     }
 }

@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface GetMyBoxFromDataBase {
-    @Select("select OrdinaryBox , LuckyBox ,RareBox ,LegendBox ,MysteryBox from userGameAttributes where  id = #{id} limit 1" )
+    @Select("select OrdinaryBox , LuckyBox ,RareBox ,LegendBox ,MysteryBox from usergameattributes where  id = #{id} limit 1" )
     public MyBoxBean getMyBox(int id);
 }

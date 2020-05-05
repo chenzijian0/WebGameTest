@@ -16,6 +16,6 @@ public class RankList {
     public String rankList(HttpServletRequest request ){
        GamerRankBean[] gamerRankBeans = rankList.getList();
        request.setAttribute("rankingList",gamerRankBeans);
-       return "/GamePage/gameRanking";
+       return "GamePage/gameRanking";
     }
 }

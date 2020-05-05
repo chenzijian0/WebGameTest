@@ -29,6 +29,6 @@ public class ModifyAttributes
         {
             modifyGamerAttributes.updateGamerAttributes(bean.getSnh(),bean.getAgi(),bean.getPhy(),bean.getDex(),bean.getWis(),bean.getMnd(), id);
         }
-        response.sendRedirect("/GamePage/gameMain.html");
+        response.sendRedirect("GamePage/gameMain.html");
     }
 }

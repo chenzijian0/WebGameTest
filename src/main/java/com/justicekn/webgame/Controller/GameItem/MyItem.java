@@ -40,6 +40,6 @@ public class MyItem
         request.setAttribute("armorList", armorList);
         request.setAttribute("usableItems", usableItems);
 
-        return "/GamePage/gameItem";
+        return "GamePage/gameItem";
     }
 }

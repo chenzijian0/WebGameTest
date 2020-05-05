@@ -1,7 +1,5 @@
 package com.justicekn.webgame.DAO.Interface.GameMain;
 
-import com.justicekn.webgame.Bean.GameMain.ModifyAttributesBean;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;

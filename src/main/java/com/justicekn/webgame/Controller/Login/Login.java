@@ -39,6 +39,7 @@ public class Login {
             request.getSession().setAttribute("userKfb", kfb);
             request.getSession().setAttribute("userName", name);
             request.getSession().setAttribute("userId", id);
+            logger.info("用户ID-->{}", id);
 ////            获取用户游戏属性信息
 //            UserGameAttributes userGameAttributes = loginHandler.GetUserGameAttributes(id);
 //            logger.info("获取了用户的游戏属性信息: {}", userGameAttributes);
@@ -51,7 +52,7 @@ public class Login {
         } else {
             request.setAttribute("loginErrorMsg", "账号或密码错误");
 //            request.getRequestDispatcher("/index.html").forward(request,response);
-            return "/index";
+            return "index";
         }
     }
 }

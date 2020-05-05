@@ -19,6 +19,6 @@ public class BuffRankList {
         int id = (int) request.getSession().getAttribute("userId");
         double buffValue = getBuffRankList.getMyBuffValue(id);
         request.getSession().setAttribute("buffValue",buffValue);
-        return "/GamePage/gameBuff";
+        return "GamePage/gameBuff";
     }
 }

@@ -38,7 +38,7 @@ public class MyMain
         //获取Buff信息
         double buffValue = getBuffRankList.getMyBuffValue(id);
         request.getSession().setAttribute("buffValue", buffValue);
-        //计算属性
+        //
         GamersEntity gamersEntity = new GamersEntity(userGameAttributes, buffValue);
         request.getSession().setAttribute("gamersEntity", gamersEntity);
 
@@ -57,6 +57,6 @@ public class MyMain
         {
             request.setAttribute("canChallenge", true);
         }
-        return "/GamePage/gameMain";
+        return "GamePage/gameMain";
     }
 }
