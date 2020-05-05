@@ -48,7 +48,7 @@ public class Login {
 //            double buffValue = getBuffRankList.getMyBuffValue(id);
 //            request.getSession().setAttribute("buffValue",buffValue);
 //            response.sendRedirect("/GamePage/gameMain.html");
-            return "redirect:/GamePage/gameMain.html";
+            return "redirect:GamePage/gameMain.html";
         } else {
             request.setAttribute("loginErrorMsg", "账号或密码错误");
 //            request.getRequestDispatcher("/index.html").forward(request,response);
