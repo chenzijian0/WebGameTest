@@ -279,8 +279,8 @@ public class BattleSimulation
                 {
                     restoreLife = userArm.getRestoreLife();
                     battleInf.setRestoreLife(true);
-                    if ((userEntity.getHealth() + remainingHp) < userEntity.getTotalHeath())
-                        userEntity.setHealth(userEntity.getHealth() + remainingHp);
+                    if ((userEntity.getHealth() + restoreLife) < userEntity.getTotalHeath())
+                        userEntity.setHealth(userEntity.getHealth() + restoreLife);
                     else userEntity.setHealth(userEntity.getTotalHeath());
                 }
 

@@ -281,6 +281,26 @@
                     display: block;
                 }
 
+                .pt {
+                    color: #00cc00;
+                }
+
+                .xy {
+                    color: #0000cc;
+                }
+
+                .xiyou {
+                    color: #eecc00;
+                }
+
+                .cq {
+                    color: #ff6600;
+                }
+
+                .sm {
+                    color: #ff0066;
+                }
+
                 /*pt*/
             </style>
             <script language="JavaScript">
@@ -424,13 +444,18 @@
                     <table width="100%" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig1">
                         <tbody>
                         <tr>
-                            <td colspan="2" style="line-height:normal;">（装备中）<span
-                                    style="color:#FF6600;">传奇的长剑</span> -
-                                攻击力+（力量敏捷智力属性*1），并替换技能破空斩（攻击力 + 全属性*2），每减少3%生命值增加1%攻击速度1%暴击几率1%技能释放几率<br>神秘属性：<span
-                                        style="color:#FF0066;">火神秘：燃烧，每次攻击增加(对方总生命值5%)的伤害，单局内无限叠加</span>。<br>主属性：穿透对方意志(等级x1)。增加攻击力(等级x5)。增加速度(等级x2)。增加技能伤害(等级x1%)。<br>从属性：技能(系数(x3)x0.5%)。攻击(智力x0.3%)。穿透(智力x0.3%)。技能(敏捷x0.3%)。速度(敏捷x0.4%)。暴击(智力x0.3%)。暴击(敏捷x0.3%)。暴击(系数(x3)x0.4%)。<br>（装备中）<span
-                                        style="color:#FF6600;">传奇的铠甲</span> - 意志+10%<br>主属性：每减少5%生命值获得额外意志(等级x1)。获得无护甲魔法盾500+(等级x20)。被攻击回血100+(等级x5)。反弹对方实际伤害15%+(等级x0.1%)。<br>从属性：加防(系数(x3)x0.3%)。暴减(灵活x0.5%)。回血(体质x0.5%)。回血(体质x0.2%)。回血(体质x0.4%)。回血(系数(x3)x0.3%)。反伤(体质x0.2%)。加防(系数(x3)x0.3%)。<br><br>最终加成：<br>攻击伤害+415
-                                | 攻击速度+382 | 暴击伤害+0% | 技能伤害+239% | 穿透意志+83 | 生命偷取+0<br>受伤回血+2904 | 魔法护盾+1860 | 减血加甲+156
-                                | 反弹伤害+29.9% | 暴击减伤0 | 技能减伤0
+                            <td colspan="2" style="line-height:normal;">（装备中）<span th:class="${useWeapon.ra}"
+                                                                                   th:text="${useWeapon.weaponClassName}"
+                            >传奇的长剑</span><span th:text="${useWeapon.weaponBonus}">
+                            </span><br><span
+                                    th:utext="${useWeapon.weaponAttributes}"></span>
+
+                                （装备中）<span th:class="${useArm.ra}"
+                                           th:text="${useArm.armorClassName}"
+                                >传奇的长剑</span><span th:text="${useArm.armorBonus}">
+                            </span><br><span
+                                        th:utext="${useArm.armorAttributes}"></span>
+
                             </td>
                         </tr>
                         <tr>
@@ -510,8 +535,8 @@
                                     <li class="pk_log_v">直到胜利获得奖励，请点击这里开始争夺战斗</li>
                                     <li class="pk_log_f">或者失败后明天再来，每天自动重置</li>
                                 </ul>
-                                <ul id="pk_text" class="pk_log_ul"th:if="${canChallenge}==false">
-                                    <li class="pk_log_f">你倒下了,休息5分钟再来挑战吧! </li>
+                                <ul id="pk_text" class="pk_log_ul" th:if="${canChallenge}==false">
+                                    <li class="pk_log_f">你倒下了,休息5分钟再来挑战吧!</li>
                                 </ul>
 
                             </div>

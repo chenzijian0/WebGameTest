@@ -1,10 +1,13 @@
 package com.justicekn.webgame.Controller.GameMain;
 
+import com.justicekn.webgame.Bean.GameItem.EquipmentEntity.ArmorAttributes;
+import com.justicekn.webgame.Bean.GameItem.EquipmentEntity.WeaponAttributes;
 import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
 import com.justicekn.webgame.DAO.Interface.GameMain.QueryChallengeTime;
 import com.justicekn.webgame.Handler.GameBuff.GetBuffRankList;
 import com.justicekn.webgame.Handler.GameMain.CanChallenge;
+import com.justicekn.webgame.Handler.GameMain.GetUseEquipment;
 import com.justicekn.webgame.Handler.Login.LoginHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,8 @@ public class MyMain
     GetBuffRankList getBuffRankList;
     @Autowired
     CanChallenge canChallenge;
+    @Autowired
+    GetUseEquipment getUseEquipment;
 
     @RequestMapping("/GamePage/gameMain.html")
     public String getMyMainPage(HttpServletRequest request, HttpServletResponse response)
@@ -36,6 +41,12 @@ public class MyMain
         //计算属性
         GamersEntity gamersEntity = new GamersEntity(userGameAttributes, buffValue);
         request.getSession().setAttribute("gamersEntity", gamersEntity);
+
+        //获取穿戴装备信息
+        ArmorAttributes useArm = getUseEquipment.getUseArm(id, request.getSession());
+        WeaponAttributes useWeapon = getUseEquipment.getUseWeapon(id, request.getSession());
+        request.setAttribute("useArm",useArm);
+        request.setAttribute("useWeapon",useWeapon);
 
         //查看是否能够进行挑战
         if (canChallenge.canChallenge(id))
