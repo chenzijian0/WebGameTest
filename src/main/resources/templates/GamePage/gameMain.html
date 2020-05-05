@@ -439,7 +439,7 @@
             </div>
             <div class="line"></div>
             <div id="wdsx" style="width:860px;display:none;">
-                <form name="rvrc1" action="https://bbs.ikfol.com/kf_fw_ig_enter.php" method="post">
+                <form name="rvrc1" action="/GamePage/ModifyAttributes" method="post">
                     <input name="lx" type="hidden" value="1">
                     <table width="100%" cellspacing="0" cellpadding="0" align="center" class="kf_fw_ig1">
                         <tbody>
@@ -460,37 +460,37 @@
                         </tr>
                         <tr>
                             <td width="40%">力量 (每点+5攻击力)</td>
-                            <td width="60%"><input size="3" maxlength="3" name="s1" value="1" type="text"
+                            <td width="60%"><input size="3" maxlength="3" name="snh" value="1" type="text"
                                                    th:value="${session.userAttributesFromDataBase.snh}"> <span
                                     style="color:#009900;"></span></td>
                         </tr>
                         <tr>
                             <td>体质 (每点+20生命值)</td>
-                            <td><input size="3" maxlength="3" name="s2" value="322" type="text"
+                            <td><input size="3" maxlength="3" name="phy" value="322" type="text"
                                        th:value="${session.userAttributesFromDataBase.phy}"> <span
                                     style="color:#009900;"></span></td>
                         </tr>
                         <tr>
                             <td>敏捷 (每点+2攻击速度)</td>
-                            <td><input size="3" maxlength="3" name="d1" value="204" type="text"
+                            <td><input size="3" maxlength="3" name="agi" value="204" type="text"
                                        th:value="${session.userAttributesFromDataBase.agi}"> <span
                                     style="color:#009900;"></span></td>
                         </tr>
                         <tr>
                             <td>灵活 (暴击率=灵活/(灵活+100)%)</td>
-                            <td><input size="3" maxlength="3" name="d2" value="1" type="text"
+                            <td><input size="3" maxlength="3" name="dex" value="1" type="text"
                                        th:value="${session.userAttributesFromDataBase.dex}"> <span
                                     style="color:#009900;"></span></td>
                         </tr>
                         <tr>
                             <td>智力 (技能释放=智力/(智力+90)%)</td>
-                            <td><input size="3" maxlength="3" name="i1" value="1" type="text"
+                            <td><input size="3" maxlength="3" name="wis" value="1" type="text"
                                        th:value="${session.userAttributesFromDataBase.wis}"> <span
                                     style="color:#009900;"></span></td>
                         </tr>
                         <tr>
                             <td>意志 (防御=意志/(意志+150)%)</td>
-                            <td><input size="3" maxlength="3" name="i2" value="1" type="text"
+                            <td><input size="3" maxlength="3" name="mnd" value="1" type="text"
                                        th:value="${session.userAttributesFromDataBase.mnd}"> <span
                                     style="color:#009900;"></span></td>
                         </tr>

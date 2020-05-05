@@ -2,8 +2,10 @@ package com.justicekn.webgame;
 
 import com.justicekn.webgame.Bean.GameItem.EquipmentEntity.ArmorAttributes;
 import com.justicekn.webgame.Bean.GameMain.GamersEntity;
+import com.justicekn.webgame.Bean.GameMain.ModifyAttributesBean;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
 import com.justicekn.webgame.DAO.Interface.GameItem.ReadUseableItemInf;
+import com.justicekn.webgame.DAO.Interface.GameMain.ModifyGamerAttributes;
 import com.justicekn.webgame.DAO.Interface.GameMain.QueryChallengeTime;
 import com.justicekn.webgame.Handler.GameBuff.GetBuffRankList;
 import com.justicekn.webgame.Handler.GameItem.CalculateIsUsedSuccessfully;
@@ -156,6 +158,14 @@ class WebgameApplicationTests
         System.out.println(d1.before(new Date()));
     }
 
+@Autowired
+ModifyGamerAttributes modifyGamerAttributes;
+    @Test
+    void modify()
+    {
+        ModifyAttributesBean bean = new ModifyAttributesBean(1, 1, 1, 1, 1, 1);
+        modifyGamerAttributes.updateGamerAttributes(bean.getSnh(),bean.getAgi(),bean.getPhy(),bean.getDex(),bean.getWis(),bean.getMnd(), 37);
+    }
 
 
 }

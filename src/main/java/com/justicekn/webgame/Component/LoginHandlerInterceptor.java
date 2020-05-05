@@ -13,8 +13,8 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         if(userAccount==null) {
             request.setAttribute("Permission_denied","没有权限，请先登录");
             request.getRequestDispatcher("/").forward(request,response);
-            System.out.println("拦截目标： " + request.getRequestURI());
-            System.out.println("已经拦截目标");
+//            System.out.println("拦截目标： " + request.getRequestURI());
+//            System.out.println("已经拦截目标");
             return false;
         }
         else return true;
