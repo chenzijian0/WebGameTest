@@ -49,7 +49,7 @@ public class MyMain
         request.setAttribute("useWeapon",useWeapon);
 
         //查看是否能够进行挑战
-        if (canChallenge.canChallenge(id))
+        if (!canChallenge.canChallenge(id))
         {
             request.setAttribute("canChallenge", false);
         }

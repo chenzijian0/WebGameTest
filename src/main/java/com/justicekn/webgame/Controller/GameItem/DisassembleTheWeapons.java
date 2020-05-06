@@ -23,12 +23,24 @@ public class DisassembleTheWeapons
         switch (type)
         {
             case 1:
+                disassembleTheEquipment.IncreaseWeaponExperience(1, id);
+                if (disassembleTheEquipment.isWeaponUpgradeLevel(id) <= 0)
+                    disassembleTheEquipment.weaponUpgradeLevel(id);
                 return "武器经验+1";
             case 2:
+                disassembleTheEquipment.IncreaseWeaponExperience(4, id);
+                if (disassembleTheEquipment.isWeaponUpgradeLevel(id) <= 0)
+                    disassembleTheEquipment.weaponUpgradeLevel(id);
                 return "武器经验+4";
             case 3:
+                disassembleTheEquipment.IncreaseWeaponExperience(8, id);
+                if (disassembleTheEquipment.isWeaponUpgradeLevel(id) <= 0)
+                    disassembleTheEquipment.weaponUpgradeLevel(id);
                 return "武器经验+8";
             case 4:
+                disassembleTheEquipment.IncreaseWeaponExperience(16, id);
+                if (disassembleTheEquipment.isWeaponUpgradeLevel(id) <= 0)
+                    disassembleTheEquipment.weaponUpgradeLevel(id);
                 return "武器经验+16";
         }
         return "";

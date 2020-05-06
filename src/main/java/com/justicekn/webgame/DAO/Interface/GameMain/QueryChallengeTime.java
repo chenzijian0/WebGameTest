@@ -11,6 +11,6 @@ public interface QueryChallengeTime
 {
     @Select("select nextChallengeTime from usergameattributes where  id = #{id}")
     public Date challengeTiem(int id);
-    @Update("update usergameattributes SET nextChallengeTime =  ADDTIME(now(),'0:5:0') where id = #{id}")
+    @Update("update usergameattributes SET nextChallengeTime =  ADDTIME(now(),'0:0:0') where id = #{id}")
     public void ifChallengeFail(int id);
 }

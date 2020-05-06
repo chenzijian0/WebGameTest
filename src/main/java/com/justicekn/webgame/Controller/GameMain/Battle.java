@@ -30,10 +30,10 @@ public class Battle
         UserGameAttributes userGameAttributes;
         id = (int)request.getSession().getAttribute("userId");
         //判断是否可以进行挑战
-        if (canChallenge.canChallenge(id))
+        if (!canChallenge.canChallenge(id))
         {
             response.sendRedirect("/GamePage/CanNotChallenge");
-            return "/GamePage/FightInf/FightInf";
+            return "GamePage/FightInf/FightInf";
         }
 
 

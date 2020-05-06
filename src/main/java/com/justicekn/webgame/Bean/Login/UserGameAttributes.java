@@ -24,7 +24,7 @@ public class UserGameAttributes {
     private int arm_level;
     private int wea_level;
     private int arm_exp;
-    private int wea_exp;
+    private int wae_exp;
     private int id;
     private int assignable;
     private String name;
@@ -33,7 +33,7 @@ public class UserGameAttributes {
     {
     }
 
-    public UserGameAttributes(int level, int level_exp, int snh, int agi, int phy, int dex, int wis, int mnd, int luk, int end, String arm, String wea, double buff, int floor, int cartoon1, int cartoon2, int room_key, int cd, int med, int coupon, int arm_level, int wea_level, int arm_exp, int wea_exp, int id, int assignable, String name)
+    public UserGameAttributes(int level, int level_exp, int snh, int agi, int phy, int dex, int wis, int mnd, int luk, int end, String arm, String wea, double buff, int floor, int cartoon1, int cartoon2, int room_key, int cd, int med, int coupon, int arm_level, int wea_level, int arm_exp, int wae_exp, int id, int assignable, String name)
     {
         this.level = level;
         this.level_exp = level_exp;
@@ -58,7 +58,7 @@ public class UserGameAttributes {
         this.arm_level = arm_level;
         this.wea_level = wea_level;
         this.arm_exp = arm_exp;
-        this.wea_exp = wea_exp;
+        this.wae_exp = wae_exp;
         this.id = id;
         this.assignable = assignable;
         this.name = name;
@@ -88,7 +88,7 @@ public class UserGameAttributes {
                 ", arm_level=" + arm_level +
                 ", wea_level=" + wea_level +
                 ", arm_exp=" + arm_exp +
-                ", wea_exp=" + wea_exp +
+                ", wea_exp=" + wae_exp +
                 ", id=" + id +
                 ", assignable=" + assignable +
                 ", name='" + name + '\'' +
@@ -296,12 +296,12 @@ public class UserGameAttributes {
         this.arm_exp = arm_exp;
     }
 
-    public int getWea_exp() {
-        return wea_exp;
+    public int getWae_exp() {
+        return wae_exp;
     }
 
-    public void setWea_exp(int wea_exp) {
-        this.wea_exp = wea_exp;
+    public void setWae_exp(int wae_exp) {
+        this.wae_exp = wae_exp;
     }
 
     public int getId() {

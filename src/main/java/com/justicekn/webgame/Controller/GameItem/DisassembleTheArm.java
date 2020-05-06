@@ -23,12 +23,21 @@ public class DisassembleTheArm
         switch (type)
         {
             case 1:
+                disassembleTheEquipment.IncreaseArmExperience(1, id);
+                if (disassembleTheEquipment.isArmUpgradeLevel(id) <= 0) disassembleTheEquipment.armUpgradeLevel(id);
+
                 return "防具经验+1";
             case 2:
+                disassembleTheEquipment.IncreaseArmExperience(4, id);
+                if (disassembleTheEquipment.isArmUpgradeLevel(id) <= 0) disassembleTheEquipment.armUpgradeLevel(id);
                 return "防具经验+4";
             case 3:
+                disassembleTheEquipment.IncreaseArmExperience(8, id);
+                if (disassembleTheEquipment.isArmUpgradeLevel(id) <= 0) disassembleTheEquipment.armUpgradeLevel(id);
                 return "防具经验+8";
             case 4:
+                disassembleTheEquipment.IncreaseArmExperience(16, id);
+                if (disassembleTheEquipment.isArmUpgradeLevel(id) <= 0) disassembleTheEquipment.armUpgradeLevel(id);
                 return "防具经验+16";
         }
         return "";
