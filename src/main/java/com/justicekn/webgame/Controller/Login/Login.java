@@ -1,6 +1,5 @@
 package com.justicekn.webgame.Controller.Login;
 
-import com.justicekn.webgame.Bean.Login.UserGameAttributes;
 import com.justicekn.webgame.Handler.GameBuff.GetBuffRankList;
 import com.justicekn.webgame.Handler.Login.LoginHandler;
 import org.slf4j.Logger;
