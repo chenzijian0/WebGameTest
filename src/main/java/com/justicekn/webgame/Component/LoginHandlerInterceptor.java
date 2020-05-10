@@ -1,9 +1,10 @@
 package com.justicekn.webgame.Component;
 
 import com.justicekn.webgame.DAO.Interface.GameItem.GetUserKfb;
-import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
+@Service
 public class LoginHandlerInterceptor implements HandlerInterceptor
 {
     @Autowired
@@ -44,13 +46,13 @@ public class LoginHandlerInterceptor implements HandlerInterceptor
         }
         else
         {
-            log.info("token-->{}", token);
+//            jwtConfiguration = new JWTConfiguration("098f6bcd4621d373cade4e832627b4f6","MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=","restapiuser",172800000);
             int id = 0;
             String account = JwtTokenUtil.getUserAccount(token, jwtConfiguration.getBase64Secret());
             id = JwtTokenUtil.getUserId(token, jwtConfiguration.getBase64Secret());
             String name = JwtTokenUtil.getUsername(token, jwtConfiguration.getBase64Secret());
             if (id == 0 || name == null || account == null) return false;
-            log.info("id --> {}  name --> {}  account --> {}  ", id, name, account);
+            log.info("Token Inf: id --> {}  name --> {}  account --> {}  ", id, name, account);
             request.getSession().setAttribute("userId", id);
             request.getSession().setAttribute("userAccount", account);
             request.getSession().setAttribute("userName", name);

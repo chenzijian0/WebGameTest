@@ -55,7 +55,7 @@ public class Login
 //            double buffValue = getBuffRankList.getMyBuffValue(id);
 //            request.getSession().setAttribute("buffValue",buffValue);
 //            response.sendRedirect("/GamePage/gameMain.html");
-
+            
             String token = JwtTokenUtil.createJWT(id, name, account, "NoName", jwtConfiguration);
             Cookie cookie = new Cookie("token", token);
             cookie.setMaxAge(24 * 60 * 60 * 2);

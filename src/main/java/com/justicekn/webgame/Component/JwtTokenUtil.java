@@ -1,6 +1,5 @@
 package com.justicekn.webgame.Component;
 
-import com.alibaba.druid.support.spring.stat.annotation.Stat;
 import io.jsonwebtoken.*;
 import org.apache.logging.log4j.util.Base64Util;
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
-
 public class JwtTokenUtil
 {
 
@@ -84,11 +82,15 @@ public class JwtTokenUtil
             {
                 long expMillis = nowMillis + TTLMillis;
                 Date exp = new Date(expMillis);
+//                System.out.println("过期时间: "+exp);
+//                System.out.println("开始时间: "+now);
+                log.info("JWT 有效时间 {} , 生成时间 {}",  exp , now );
                 builder.setExpiration(exp)  // 是一个时间戳，代表这个JWT的过期时间；
                         .setNotBefore(now); // 是一个时间戳，代表这个JWT生效的开始时间，意味着在这个时间之前验证JWT是会失败的
             }
 
             //生成JWT
+            log.info("生成的JWT:{}", builder.compact());
             return builder.compact();
         }
         catch (Exception e)

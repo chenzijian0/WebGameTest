@@ -180,6 +180,7 @@ class WebgameApplicationTests
 
         String t = JwtTokenUtil.createJWT(37, "JusticeKn", "1", "NoName", jwtConfiguration);
         System.out.println(t);
+        System.out.println(jwtConfiguration.getBase64Secret());
         String name = JwtTokenUtil.getUsername(t, jwtConfiguration.getBase64Secret());
         String account = JwtTokenUtil.getUserAccount(t, jwtConfiguration.getBase64Secret());
         int id = JwtTokenUtil.getUserId(t, jwtConfiguration.getBase64Secret());
