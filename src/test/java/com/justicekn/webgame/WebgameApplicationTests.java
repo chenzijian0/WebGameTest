@@ -5,7 +5,7 @@ import com.justicekn.webgame.Bean.GameMain.GamersEntity;
 import com.justicekn.webgame.Bean.GameMain.ModifyAttributesBean;
 import com.justicekn.webgame.Bean.Login.UserGameAttributes;
 import com.justicekn.webgame.Component.JwtTokenUtil;
-import com.justicekn.webgame.Configuration.JWTConfiguration;
+import com.justicekn.webgame.Component.JWTConfiguration;
 import com.justicekn.webgame.DAO.Interface.GameItem.ReadUseableItemInf;
 import com.justicekn.webgame.DAO.Interface.GameMain.ModifyGamerAttributes;
 import com.justicekn.webgame.DAO.Interface.GameMain.QueryChallengeTime;
@@ -13,7 +13,6 @@ import com.justicekn.webgame.Handler.GameBuff.GetBuffRankList;
 import com.justicekn.webgame.Handler.GameItem.CalculateIsUsedSuccessfully;
 import com.justicekn.webgame.Handler.GameItem.SellItemHandler;
 import com.justicekn.webgame.Handler.Login.LoginHandler;
-import io.jsonwebtoken.Jwt;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -65,7 +64,7 @@ class WebgameApplicationTests
 
     }
 
-   @Test
+    @Test
     void TestArm()
     {
         /***
@@ -161,27 +160,33 @@ class WebgameApplicationTests
         System.out.println(d1.before(new Date()));
     }
 
-@Autowired
-ModifyGamerAttributes modifyGamerAttributes;
+    @Autowired
+    ModifyGamerAttributes modifyGamerAttributes;
+
     @Test
     void modify()
     {
         ModifyAttributesBean bean = new ModifyAttributesBean(1, 1, 1, 1, 1, 1);
-        modifyGamerAttributes.updateGamerAttributes(bean.getSnh(),bean.getAgi(),bean.getPhy(),bean.getDex(),bean.getWis(),bean.getMnd(), 37);
+        modifyGamerAttributes.updateGamerAttributes(bean.getSnh(), bean.getAgi(), bean.getPhy(), bean.getDex(), bean.getWis(), bean.getMnd(), 37);
     }
 
 
-@Autowired
-JWTConfiguration jwtConfiguration;
-    @Test
-    void JwtCreate(){
+    @Autowired
+    JWTConfiguration jwtConfiguration;
 
-    JwtTokenUtil jwtTokenUtil = new JwtTokenUtil();
-    String t = JwtTokenUtil.createJWT( "37" ,"JusticeKn" ,"NoName" ,jwtConfiguration);
-        System.out.println(JwtTokenUtil.parseJWT(t,jwtConfiguration.getBase64Secret()));
-        System.out.println(JwtTokenUtil.getUserId(t, jwtConfiguration.getBase64Secret()));
-        System.out.println(JwtTokenUtil.getUsername(t, jwtConfiguration.getBase64Secret()));
-}
+    @Test
+    void JwtCreate()
+    {
+
+        String t = JwtTokenUtil.createJWT(37, "JusticeKn", "1", "NoName", jwtConfiguration);
+        System.out.println(t);
+        String name = JwtTokenUtil.getUsername(t, jwtConfiguration.getBase64Secret());
+        String account = JwtTokenUtil.getUserAccount(t, jwtConfiguration.getBase64Secret());
+        int id = JwtTokenUtil.getUserId(t, jwtConfiguration.getBase64Secret());
+        System.out.println(name );
+        System.out.println(account );
+        System.out.println(id );
+    }
 
 
 }

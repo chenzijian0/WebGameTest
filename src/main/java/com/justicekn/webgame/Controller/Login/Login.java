@@ -1,5 +1,7 @@
 package com.justicekn.webgame.Controller.Login;
 
+import com.justicekn.webgame.Component.JWTConfiguration;
+import com.justicekn.webgame.Component.JwtTokenUtil;
 import com.justicekn.webgame.Handler.GameBuff.GetBuffRankList;
 import com.justicekn.webgame.Handler.Login.LoginHandler;
 import org.slf4j.Logger;
@@ -9,24 +11,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-public class Login {
+public class Login
+{
     Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     LoginHandler loginHandler;
     //登录时需要获取一次Buff数值, 可以与进入 gameBuff页面的搜索合并 减少搜索次数(待优化)
     @Autowired
     GetBuffRankList getBuffRankList;
+    @Autowired
+    JWTConfiguration jwtConfiguration;
 
     @RequestMapping("/Login")
-    public String loggin(String account, String password, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String loggin(String account, String password, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         logger.info("获取登录信息(未确认) : 账号-->{} 密码-->{}", account, password);
         String result = loginHandler.checked(account, password);
-        if (result.equals("ok")) {
+        if (result.equals("ok"))
+        {
 //            将账号信息放入Session域中
             /***
              * 待优化区域 ， 可以把3次查询归为一次 提升性能
@@ -47,8 +55,16 @@ public class Login {
 //            double buffValue = getBuffRankList.getMyBuffValue(id);
 //            request.getSession().setAttribute("buffValue",buffValue);
 //            response.sendRedirect("/GamePage/gameMain.html");
+
+            String token = JwtTokenUtil.createJWT(id, name, account, "NoName", jwtConfiguration);
+            Cookie cookie = new Cookie("token", token);
+            cookie.setMaxAge(24 * 60 * 60 * 2);
+            response.addCookie(cookie);
+
             return "redirect:GamePage/gameMain.html";
-        } else {
+        }
+        else
+        {
             request.setAttribute("loginErrorMsg", "账号或密码错误");
 //            request.getRequestDispatcher("/index.html").forward(request,response);
             return "index";
